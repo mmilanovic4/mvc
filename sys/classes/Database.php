@@ -12,8 +12,8 @@ final class Database {
 	private static $dbh = null;
 
 	/**
-	 * Враћа инстанцу PDO хендлера
-	 * @return PDO PDO instance
+	 * Успоставља конекцију (користећи Синглтон патерн) и враћа инстанцу PDO хендлера
+	 * @return PDO
 	 */
 	final public static function getInstance() {
 		if (self::$dbh === null) {

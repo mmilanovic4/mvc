@@ -1,11 +1,12 @@
 <?php
 
-require_once './autoloader.php';
+require_once './sys/autoloader.php';
 
 error_reporting(0);
 
 Session::begin();
 
+// Обрада захтева
 $request = filter_input(INPUT_SERVER, 'REQUEST_URI');
 $request = substr($request, strlen(Config::PATH));
 
