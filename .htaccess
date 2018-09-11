@@ -1,0 +1,8 @@
+Options -Indexes
+
+<IfModule mod_rewrite.c>
+	RewriteEngine On
+	RewriteRule ^assets - [L]
+	RewriteRule ^docs - [L]
+	RewriteRule ^(.*)$ index.php [L]
+</IfModule>
