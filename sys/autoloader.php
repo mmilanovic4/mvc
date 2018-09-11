@@ -9,6 +9,6 @@ spl_autoload_register(function($className) {
 	} elseif (preg_match('|^([A-Z][a-z]+)+Model$|', $className)) {
 		require_once './app/models/' . $className . '.php';
 	} elseif ($className === 'Config') {
-		require_once './Config.php';
+		require_once './sys/Config.php';
 	}
 });
