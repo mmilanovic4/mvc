@@ -1,5 +1,3 @@
-<?php require_once './app/views/_global/header.php'; ?>
-
 <header>
 	<h1><?php echo $DATA['title']; ?></h1>
 </header>
@@ -13,5 +11,3 @@
 		<a href="<?php Utils::generateLink('logout'); ?>">Log Out</a>
 	</p>
 </main>
-
-<?php require_once './app/views/_global/footer.php'; ?>

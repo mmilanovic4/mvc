@@ -51,9 +51,25 @@ call_user_func_array([$worker, $methodName], $args);
 $DATA = $worker->getData();
 
 // Учитавање одговарајућег шаблона приказа
+$headerView = './app/views/_global/header.php';
+$footerView = './app/views/_global/footer.php';
 $view = './app/views/' . $foundRoute['Controller'] . '/' . $foundRoute['Method'] . '.php';
+
+if (!file_exists($headerView)) {
+	ob_clean();
+	die('View error - header file missing!');
+}
+
 if (!file_exists($view)) {
 	ob_clean();
 	die('View error - file not found!');
 }
+
+if (!file_exists($footerView)) {
+	ob_clean();
+	die('View error - footer file missing!');
+}
+
+require_once $headerView;
 require_once $view;
+require_once $footerView;

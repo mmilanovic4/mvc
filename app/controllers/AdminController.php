@@ -10,7 +10,7 @@ class AdminController extends AuthController {
 	 * @return void
 	 */
 	public function index() {
-		$this->set('title', 'Admin Home');
+		$this->set('title', 'Admin Panel');
 
 		$user = UserModel::getById(Session::get(Config::USER_COOKIE));
 		if (!$user) {

@@ -1,5 +1,3 @@
-<?php require_once './app/views/_global/header.php'; ?>
-
 <header>
 	<h1><?php echo $DATA['title']; ?></h1>
 </header>
@@ -21,5 +19,3 @@
 		<button type="submit">Create</button>
 	</form>
 </main>
-
-<?php require_once './app/views/_global/footer.php'; ?>
