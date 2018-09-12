@@ -46,7 +46,7 @@ class HomeController extends Controller {
 
 			if ($user) {
 				Session::set(Config::USER_COOKIE, intval($user->id));
-				Redirect::to('admin');
+				Redirect::to('');
 			} else {
 				$this->set('message', 'Error #3!');
 				sleep(2);

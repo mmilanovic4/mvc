@@ -1,7 +1,3 @@
-<header>
-	<h1><?php echo $DATA['title']; ?></h1>
-</header>
-
 <main>
 	<?php if (isset($DATA['message'])): ?>
 	<p><?php echo $DATA['message']; ?></p>

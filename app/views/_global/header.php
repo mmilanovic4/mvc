@@ -9,3 +9,21 @@
 </head>
 
 <body>
+
+	<header>
+		<?php if (isset($DATA['title'])): ?>
+		<h1><?php echo $DATA['title']; ?></h1>
+		<?php endif;?>
+	</header>
+
+	<nav>
+		<ul>
+			<li><a href="<?php Utils::generateLink(''); ?>">Home</a></li>
+			<li><a href="<?php Utils::generateLink('tasks'); ?>">Tasks</a></li>
+			<?php if (!Session::get(Config::USER_COOKIE)): ?>
+			<li><a href="<?php Utils::generateLink('login'); ?>">Log In</a></li>
+			<?php else:?>
+			<li><a href="<?php Utils::generateLink('logout'); ?>">Log Out</a></li>
+			<?php endif; ?>
+		</ul>
+	</nav>

@@ -1,7 +1,3 @@
-<header>
-	<h1><?php echo $DATA['title']; ?></h1>
-</header>
-
 <main>
 	<?php if (count($DATA['tasks']) === 0): ?>
 	<p>Tasklist is currently empty.</p>

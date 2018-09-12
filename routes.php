@@ -17,12 +17,6 @@ return [
 		'Controller' => 'Home',
 		'Method' => 'logout'
 	],
-	// AdminController
-	[
-		'Pattern' => '|^admin/?$|',
-		'Controller' => 'Admin',
-		'Method' => 'index'
-	],
 	// TaskController
 	[
 		'Pattern' => '|^tasks/?$|',
