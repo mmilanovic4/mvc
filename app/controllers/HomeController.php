@@ -69,4 +69,14 @@ class HomeController extends Controller {
 		Redirect::to('');
 	}
 
+	/**
+	 * Рута: HTTP 404 Not Found
+	 * @return void
+	 */
+	public function e404() {
+		http_response_code(404);
+		ob_clean();
+		die('HTTP 404 - Not Found.');
+	}
+
 }

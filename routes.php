@@ -38,10 +38,16 @@ return [
 		'Controller' => 'Task',
 		'Method' => 'delete'
 	],
+	// TaskApiController
+	[
+		'Pattern' => '|^api/tasks/?$|',
+		'Controller' => 'TaskApi',
+		'Method' => 'index'
+	],
 	// Подразумевана рута
 	[
 		'Pattern' => '|^.*$|',
 		'Controller' => 'Home',
-		'Method' => 'index'
+		'Method' => 'e404'
 	]
 ];

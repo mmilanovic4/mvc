@@ -51,6 +51,15 @@ call_user_func_array([$worker, $methodName], $args);
 // Преузимање глобалних података
 $DATA = $worker->getData();
 
+// API одговор
+if ($worker instanceof ApiController) {
+	ob_clean();
+	header('Content-Type: application/json; charset=utf-8');
+	header('Access-Control-Allow-Origin: *'); // Измени у продукцији
+	echo json_encode($DATA);
+	die;
+}
+
 // Учитавање одговарајућег шаблона приказа
 $headerView = './app/views/_global/header.php';
 $footerView = './app/views/_global/footer.php';
