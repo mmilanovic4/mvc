@@ -2,52 +2,16 @@
 
 return [
 	// HomeController
-	[
-		'Pattern' => '|^/?$|',
-		'Controller' => 'Home',
-		'Method' => 'index'
-	],
-	[
-		'Pattern' => '|^login/?$|',
-		'Controller' => 'Home',
-		'Method' => 'login'
-	],
-	[
-		'Pattern' => '|^logout/?$|',
-		'Controller' => 'Home',
-		'Method' => 'logout'
-	],
+	new Route('Home', 'index', '|^/?$|'),
+	new Route('Home', 'login', '|^login/?$|'),
+	new Route('Home', 'logout', '|^logout/?$|'),
 	// TaskController
-	[
-		'Pattern' => '|^tasks/?$|',
-		'Controller' => 'Task',
-		'Method' => 'index'
-	],
-	[
-		'Pattern' => '|^tasks/create/?$|',
-		'Controller' => 'Task',
-		'Method' => 'create'
-	],
-	[
-		'Pattern' => '|^tasks/update/([0-9]+)/?$|',
-		'Controller' => 'Task',
-		'Method' => 'update'
-	],
-	[
-		'Pattern' => '|^tasks/delete/([0-9]+)/?$|',
-		'Controller' => 'Task',
-		'Method' => 'delete'
-	],
+	new Route('Task', 'index', '|^tasks/?$|'),
+	new Route('Task', 'create', '|^tasks/create/?$|'),
+	new Route('Task', 'update', '|^tasks/update/([0-9]+)/?$|'),
+	new Route('Task', 'delete', '|^tasks/delete/([0-9]+)/?$|'),
 	// TaskApiController
-	[
-		'Pattern' => '|^api/tasks/?$|',
-		'Controller' => 'TaskApi',
-		'Method' => 'index'
-	],
+	new Route('TaskApi', 'index', '|^api/tasks/?$|'),
 	// Подразумевана рута
-	[
-		'Pattern' => '|^.*$|',
-		'Controller' => 'Home',
-		'Method' => 'e404'
-	]
+	new Route('Home', 'e404', '|^.*$|'),
 ];

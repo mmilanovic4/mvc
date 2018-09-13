@@ -14,7 +14,7 @@ $request = substr($request, strlen(Config::PATH));
 $routes = require_once './routes.php';
 $args = $foundRoute = null;
 foreach ($routes as $route) {
-	if (preg_match($route['Pattern'], $request, $args)) {
+	if (preg_match($route->getPattern(), $request, $args)) {
 		$foundRoute = $route;
 		unset($args[0]);
 		$args = array_values($args);
@@ -23,7 +23,7 @@ foreach ($routes as $route) {
 }
 
 // Учитавање одговарајућег контролера
-$controller = './app/controllers/' . $foundRoute['Controller'] . 'Controller.php';
+$controller = './app/controllers/' . $foundRoute->getController() . 'Controller.php';
 if (!file_exists($controller)) {
 	ob_clean();
 	die('Controller error - file not found!');
@@ -31,7 +31,7 @@ if (!file_exists($controller)) {
 require_once $controller;
 
 // Инстанцирање класе контролера
-$className = $foundRoute['Controller'] . 'Controller';
+$className = $foundRoute->getController() . 'Controller';
 $worker = new $className;
 
 // Опциони __pre метод
@@ -40,12 +40,12 @@ if (method_exists($worker, '__pre')) {
 }
 
 // Позивање одговарајуће методе контролера
-if (!method_exists($worker, $foundRoute['Method'])) {
+if (!method_exists($worker, $foundRoute->getMethod())) {
 	ob_clean();
 	die('Controller error - method not found!');
 }
 
-$methodName = $foundRoute['Method'];
+$methodName = $foundRoute->getMethod();
 call_user_func_array([$worker, $methodName], $args);
 
 // Преузимање глобалних података
@@ -63,7 +63,7 @@ if ($worker instanceof ApiController) {
 // Учитавање одговарајућег шаблона приказа
 $headerView = './app/views/_global/header.php';
 $footerView = './app/views/_global/footer.php';
-$view = './app/views/' . $foundRoute['Controller'] . '/' . $foundRoute['Method'] . '.php';
+$view = './app/views/' . $foundRoute->getController() . '/' . $foundRoute->getMethod() . '.php';
 
 if (!file_exists($headerView)) {
 	ob_clean();
