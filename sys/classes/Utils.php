@@ -28,12 +28,15 @@ final class Utils {
 	}
 
 	/**
-	 * Форматирање датума и времена - MySQL временски печат
-	 * @param string MySQL временски печат
+	 * Форматирање датума и времена
+	 * @param string PHP или MySQL временски печат
 	 * @return string
 	 */
 	final public static function formatDateAndTime($ts) {
-		return date('H:i:s d.m.Y', strtotime($ts));
+		if (is_string($ts)) {
+			$ts = strtotime($ts);
+		}
+		return date('H:i:s d.m.Y', $ts);
 	}
 
 	/**
