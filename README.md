@@ -17,7 +17,7 @@ If you import database data from `sys/db_dump.sql`, you can authenticate with fo
 
 If you're manually adding user to `users` table, don't forget to append salt from `sys/Config.php` before hashing with SHA-512 algorithm.
 
-![Login form](https://imgur.com/a/7VRXWOy)
+![Login form](https://i.imgur.com/tpyxPA5.png)
 
 ## CRUD operations
 
@@ -28,4 +28,4 @@ Each database table should have appropriate model file. For example, table `task
 - update
 - delete
 
-![CRUD operations](https://imgur.com/a/jWBt3fI)
+![CRUD operations](https://i.imgur.com/rMfTktP.png)
