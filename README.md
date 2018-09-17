@@ -1,7 +1,7 @@
 # Overview
 
  PHP MVC boilerplate with user authentication, basic security and MySQL CRUD operations.
- Framework was developed during final year of university. It was used for some private projects, however I highly suggest you to use Laravel or some other popular framework for your work.
+ Framework was developed during the final year of university. It was used for some private projects, however I highly suggest you to use Laravel or some other popular framework for your work.
 
 ## Requirements
 
@@ -9,9 +9,9 @@
 - **Database server:** MySQL
 - PHP 7.x
 
-## Login
+## Login operation
 
-If you import database data from `sys/db_dump.sql`, you can authenticate with following credentials:
+If you imported database data from `sys/db_dump.sql`, you could authenticate with following credentials:
 - john.doe@example.com / admin
 - jane.doe@example.com / admin
 
