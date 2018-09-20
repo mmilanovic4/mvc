@@ -29,3 +29,17 @@ Each database table should have appropriate model file. For example, table `task
 - delete
 
 ![CRUD operations](https://i.imgur.com/rMfTktP.png)
+
+## Router
+
+All routes should be placed inside `routes.php`. Each route must have following properties:
+- Name of the controller where route belongs to
+- Name of the controller's method (route callback)
+- Request URI, represented via PCRE
+For example, if we have following code:
+```
+...
+new Route('Home', 'index', '|^/?$|'),
+...
+```
+it means that when user visit URI which matched RegEx `|^/?$|`, `index.php` will instantiate `HomeController.php` and call his `index` method.
