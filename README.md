@@ -36,6 +36,7 @@ All routes should be placed inside `routes.php`. Each route must have following 
 - Name of the controller where route belongs to
 - Name of the controller's method (route callback)
 - Request URI, represented via PCRE
+
 For example, if we have following code:
 ```
 ...
