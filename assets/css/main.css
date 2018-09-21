@@ -32,3 +32,12 @@ form > label > textarea {
 	resize: vertical;
 	max-height: 200px;
 }
+/**
+ * Tablets
+ */
+@media only screen and (max-width: 768px) {
+	.table-responsive {
+		max-width: 100%;
+		overflow-x: scroll;
+	}
+}

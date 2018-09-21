@@ -14,7 +14,7 @@ class HomeController extends Controller {
 
 		$user = UserModel::getById(Session::get(Config::USER_COOKIE));
 		if ($user) {
-			$userParsed = Security::escape($user->first_name . ' ' . $user->last_name);
+			$userParsed = $user->first_name . ' ' . $user->last_name;
 			$this->set('user', $userParsed);
 		} else {
 			$this->set('user', false);

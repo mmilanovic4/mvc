@@ -24,7 +24,7 @@
 			<?php if (!Session::get(Config::USER_COOKIE)): ?>
 			<li><a href="<?php Utils::generateLink('login'); ?>">Log In</a></li>
 			<?php else:?>
-			<li><a href="<?php Utils::generateLink('logout'); ?>">Log Out</a></li>
+			<li><a onclick="return confirm('Are you sure?');" href="<?php Utils::generateLink('logout'); ?>">Log Out</a></li>
 			<?php endif; ?>
 		</ul>
 	</nav>

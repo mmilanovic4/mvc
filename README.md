@@ -21,7 +21,7 @@ If you're manually adding user to `users` table, don't forget to append salt fro
 
 ## CRUD operations
 
-Each database table should have appropriate model file. For example, table `tasks` have `app/models/TaskModel.php`. There you need to hardcode table name in protected `$tableName` variable and eventually add new functions. Provided functions with basic model are:
+Each database table should have appropriate model file. For example, table `tasks` have `app/models/TaskModel.php`. There you need to hardcode table name in protected `$tableName` property and eventually add new functions. Provided functions with basic model are:
 - read
 - readAll
 - create
@@ -33,7 +33,7 @@ Each database table should have appropriate model file. For example, table `task
 ## Router
 
 All routes should be placed inside `routes.php`. Each route must have following properties:
-- Name of the controller where route belongs to
+- Name of the controller whom route belongs to
 - Name of the controller's method (route callback)
 - Request URI, represented via PCRE
 

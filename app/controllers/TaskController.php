@@ -13,22 +13,17 @@ class TaskController extends AuthController {
 		$this->set('title', 'Tasks');
 
 		$tasks = TaskModel::getAll();
-		$tasksParsed = [];
 		foreach ($tasks as $task) {
-			$task->id = intval($task->id);
-			$task->name = Security::escape($task->name);
-			$task->description = Security::escape($task->description);
 			$task->created_at = Utils::formatDateAndTime($task->created_at);
-
 			$author = UserModel::getById($task->author);
+
 			if (!$author) {
 				$task->author = 'N/A';
 			} else {
-				$task->author = Security::escape($author->first_name . ' ' . $author->last_name);
+				$task->author = $author->first_name . ' ' . $author->last_name;
 			}
-			$tasksParsed[] = $task;
 		}
-		$this->set('tasks', $tasksParsed);
+		$this->set('tasks', $tasks);
 	}
 
 	/**
@@ -76,11 +71,7 @@ class TaskController extends AuthController {
 		$method = filter_input(INPUT_SERVER, 'REQUEST_METHOD');
 		if ($method !== 'POST') {
 			$task = TaskModel::getById($id);
-			$taskParsed = new stdClass;
-			$taskParsed->id = intval($task->id);
-			$taskParsed->name = Security::escape($task->name);
-			$taskParsed->description = Security::escape($task->description);
-			$this->set('task', $taskParsed);
+			$this->set('task', $task);
 			return;
 		}
 
@@ -90,6 +81,8 @@ class TaskController extends AuthController {
 
 		if (empty($name) || empty($description)) {
 			$this->set('message', 'Error #1!');
+			$task = TaskModel::getById($id);
+			$this->set('task', $task);
 			return;
 		}
 
@@ -103,11 +96,7 @@ class TaskController extends AuthController {
 		if (!$status) {
 			$this->set('message', 'Error #2!');
 			$task = TaskModel::getById($id);
-			$taskParsed = new stdClass;
-			$taskParsed->id = intval($task->id);
-			$taskParsed->name = Security::escape($task->name);
-			$taskParsed->description = Security::escape($task->description);
-			$this->set('task', $taskParsed);
+			$this->set('task', $task);
 			return;
 		}
 		Redirect::to('tasks');
