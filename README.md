@@ -11,7 +11,7 @@
 
 ## Login operation
 
-If you imported database data from `sys/db_dump.sql`, you could authenticate with following credentials:
+If you imported database data from `sys/db/dump.sql`, you could authenticate with following credentials:
 - john.doe@example.com / admin
 - jane.doe@example.com / admin
 

@@ -33,8 +33,7 @@ class TaskController extends AuthController {
 	public function create() {
 		$this->set('title', 'Add task');
 
-		$method = filter_input(INPUT_SERVER, 'REQUEST_METHOD');
-		if ($method !== 'POST') {
+		if (!Http::isPost()) {
 			return;
 		}
 
@@ -68,8 +67,7 @@ class TaskController extends AuthController {
 	public function update($id) {
 		$this->set('title', 'Update task');
 
-		$method = filter_input(INPUT_SERVER, 'REQUEST_METHOD');
-		if ($method !== 'POST') {
+		if (!Http::isPost()) {
 			$task = TaskModel::getById($id);
 			$this->set('task', $task);
 			return;

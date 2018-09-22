@@ -7,8 +7,7 @@ error_reporting(0);
 Session::begin();
 
 // Обрада захтева
-$request = filter_input(INPUT_SERVER, 'REQUEST_URI');
-$request = substr($request, strlen(Config::PATH));
+$request = Http::getRequest();
 
 // Детектовање руте
 $routes = require_once './routes.php';
@@ -54,8 +53,7 @@ $DATA = $worker->getData();
 // API одговор
 if ($worker instanceof ApiController) {
 	ob_clean();
-	header('Content-Type: application/json; charset=utf-8');
-	header('Access-Control-Allow-Origin: *'); // Измени у продукцији
+	Http::setJsonHeaders();
 	echo json_encode($DATA);
 	die;
 }

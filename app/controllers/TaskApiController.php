@@ -14,7 +14,8 @@ class TaskApiController extends ApiController {
 	 * @return void
 	 */
 	public function index() {
-		$this->set('tasks', TaskModel::getAll());
+		$tasks = TaskModel::getAll();
+		$this->set('tasks', $tasks);
 	}
 
 }
