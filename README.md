@@ -63,7 +63,7 @@ For basic XSS protection (e.g. when we need to insert data in HTML body) you can
 <p><?php Security::escape($DATA['user']); ?></p>
 ...
 ```
-However, that won't protect us if we needed to insert data inside `<script>` tag, for example. Visit OWASP page for further instructions. If you want to use third-party library for defense in depth, HTML Purifier is a good one.
+However, that wouldn't protect us if we needed to insert data inside `<script>` tag, for example. Visit OWASP page for further instructions. If you want to use third-party library for defense in depth, HTML Purifier is a good one.
 
 - [OWASP - XSS (Cross-Site Scripting) Prevention Cheat Sheet](https://www.owasp.org/index.php/XSS_(Cross_Site_Scripting)_Prevention_Cheat_Sheet)
 - [HTML Purifier](http://htmlpurifier.org)
@@ -75,3 +75,6 @@ This framework provides user authentication functionallity, however if you inten
 - [OWASP - User Privacy Protection Cheat Sheet](https://www.owasp.org/index.php/User_Privacy_Protection_Cheat_Sheet)
 - [Let's Encrypt CA](https://letsencrypt.org)
 - [Free SSL Test](https://htbridge.com/ssl)
+
+***
+**Note:** The reason for so many commits with only grammar fixes is that my girlfriend is studying languages, so she double checks my english every now and then.

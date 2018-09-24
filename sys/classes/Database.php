@@ -27,8 +27,8 @@ final class Database {
 				self::$dbh->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_OBJ);
 				self::$dbh->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_SILENT);
 			} catch (PDOException $e) {
-				ob_clean();
 				error_log($e->getMessage());
+				ob_clean();
 				die('Database connection error!');
 			}
 		}
