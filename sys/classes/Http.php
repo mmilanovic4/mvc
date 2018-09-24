@@ -31,7 +31,7 @@ final class Http {
 	 */
 	final public static function setJsonHeaders() {
 		header('Content-Type: application/json; charset=utf-8');
-		header('Access-Control-Allow-Origin: *'); // Измени за продукцију
+		header('Access-Control-Allow-Origin: *'); // Измени пре продукције
 	}
 
 	/**

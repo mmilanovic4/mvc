@@ -1,6 +1,6 @@
 <main>
 	<?php if (isset($DATA['message'])): ?>
-	<p><?php echo $DATA['message']; ?></p>
+	<p><?php Security::escape($DATA['message']); ?></p>
 	<?php endif; ?>
 
 	<form method="POST">

@@ -10,6 +10,7 @@ final class Session {
 	 * @return void
 	 */
 	final public static function begin() {
+		session_set_cookie_params(0, '/', '', false, true); // Измени пре продукције
 		session_start();
 	}
 

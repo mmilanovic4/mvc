@@ -44,3 +44,33 @@ new Route('Home', 'index', '|^/?$|'),
 ...
 ```
 it means that when user visit URI which matched RegEx `|^/?$|`, `index.php` will instantiate `HomeController.php` and call his `index` method.
+
+## Security
+
+Framework provides basic security mechanisms.
+
+### SQL Injection
+
+`Model` class uses prepared statements, and `Database` class uses PDO's DSN charset parameter to set connection encoding to `utf8`. This way it is impossible for an attacker to inject malicious SQL. For providing defense in depth, you can use input validation - for applications that demand higher level of security, I use input validation not only in PHP, but in MySQL also (via triggers).
+
+- [OWASP - SQL Injection Prevention Cheat Sheet](https://www.owasp.org/index.php/SQL_Injection_Prevention_Cheat_Sheet#Escaping_SQLi_in_PHP)
+
+### XSS
+
+For basic XSS protection (e.g. when we need to insert data in HTML body) you can use `Security` class. For example, if we need to insert `$DATA['user']` in our HTML, we would use following code:
+```
+...
+<p><?php Security::escape($DATA['user']); ?></p>
+...
+```
+However, that won't protect us if we need to insert data inside `<script>` tag, for example. Visit OWASP page for further instructions. If you want to use third-party library for defense in depth, HTML Purifier is a good one.
+
+- [OWASP - XSS (Cross-Site Scripting) Prevention Cheat Sheet](https://www.owasp.org/index.php/XSS_(Cross_Site_Scripting)_Prevention_Cheat_Sheet)
+- [HTML Purifier](http://htmlpurifier.org)
+
+### Data Exposure
+
+This framework provides user authentication functionallity, however if you intend to use it, in order for your users to be protected, you need to use HTTPS (HTTP + SSL). Without SSL encryption anyone could intercept the transmission from your browser to the server. Today, this is completely free thanks to initiatives like Let's Encrypt CA. I highly advise that you use HTTPS-related mechanisms like HSTS and HPKP also.
+
+- [Let's Encrypt CA](https://letsencrypt.org)
+- [Free SSL Test](https://htbridge.com/ssl)

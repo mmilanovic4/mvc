@@ -16,11 +16,11 @@
 			<tbody>
 				<?php foreach ($DATA['tasks'] as $task): ?>
 				<tr>
-					<td><?php echo Security::escape($task->id); ?></td>
-					<td><?php echo Security::escape($task->name); ?></td>
-					<td><?php echo Security::escape($task->description); ?></td>
-					<td><?php echo Security::escape($task->author); ?></td>
-					<td><?php echo Security::escape($task->created_at); ?></td>
+					<td><?php Security::escape($task->id); ?></td>
+					<td><?php Security::escape($task->name); ?></td>
+					<td><?php Security::escape($task->description); ?></td>
+					<td><?php Security::escape($task->author); ?></td>
+					<td><?php Security::escape($task->created_at); ?></td>
 					<td>
 						<a href="<?php Utils::generateLink('tasks/update/' . $task->id) ?>">
 							Update

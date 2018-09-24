@@ -13,7 +13,7 @@
 
 	<header>
 		<?php if (isset($DATA['title'])): ?>
-		<h1><?php echo $DATA['title']; ?></h1>
+		<h1><?php Security::escape($DATA['title']); ?></h1>
 		<?php endif;?>
 	</header>
 

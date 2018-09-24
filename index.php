@@ -54,7 +54,7 @@ $DATA = $worker->getData();
 if ($worker instanceof ApiController) {
 	ob_clean();
 	Http::setJsonHeaders();
-	echo json_encode($DATA);
+	echo json_encode($DATA, JSON_UNESCAPED_UNICODE);
 	die;
 }
 

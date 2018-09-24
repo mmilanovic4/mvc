@@ -8,10 +8,14 @@ final class Security {
 	/**
 	 * XSS заштита
 	 * @param string $str Улазни стринг
-	 * @return string Улазни стринг са енкодованим HTML ентитетима
+	 * @return void|string Улазни стринг са енкодованим HTML ентитетима
 	 */
-	final public static function escape($str) {
-		return htmlentities($str, ENT_QUOTES, 'UTF-8');
+	final public static function escape($str, $return = false) {
+		$str = htmlentities($str, ENT_QUOTES, 'UTF-8');
+		if ($return) {
+			return $str;
+		}
+		echo $str;
 	}
 
 	/**
