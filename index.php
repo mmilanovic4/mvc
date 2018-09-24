@@ -33,7 +33,7 @@ require_once $controller;
 $className = $foundRoute->getController() . 'Controller';
 $worker = new $className;
 
-// Опциони __pre метод
+// Позивање __pre метода
 if (method_exists($worker, '__pre')) {
 	call_user_func([$worker, '__pre']);
 }

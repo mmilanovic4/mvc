@@ -12,7 +12,7 @@ final class Database {
 	private static $dbh = null;
 
 	/**
-	 * Успоставља конекцију (користећи Синглтон патерн) и враћа инстанцу PDO хендлера
+	 * Успоставља конекцију са сервером БП (користећи Синглтон патерн) и враћа инстанцу PDO хендлера
 	 * @return PDO
 	 */
 	final public static function getInstance() {
@@ -28,6 +28,7 @@ final class Database {
 				self::$dbh->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_SILENT);
 			} catch (PDOException $e) {
 				ob_clean();
+				error_log($e->getMessage());
 				die('Database connection error!');
 			}
 		}
