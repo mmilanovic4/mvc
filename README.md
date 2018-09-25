@@ -45,11 +45,22 @@ new Route('Home', 'index', '|^/?$|'),
 ```
 it means that when user visits URI which matched RegEx `|^/?$|`, `index.php` will instantiate `HomeController.php` and call his `index` method.
 
+### RegEx cheat sheet
+
+Route               | Regex
+:-------------------|:-------------------
+`/`                 | \|^/?$\|
+`users/`            | \|^users/?$\|
+`users/create/`     | \|^users/create/?$\|
+`users/update/15/`  | \|^users/update/([0-9]+)/?$\|
+`users/delete/4/`   | \|^users/delete/([0-9]+)/?$\|
+Anything            | \|^.*$\|
+
 ## Security
 
 Framework provides basic security mechanisms.
 
-### SQL Injection
+### SQL injection
 
 `Model` class uses prepared statements, and `Database` class uses PDO's DSN charset parameter to set connection encoding to `utf8`. It is impossible for an attacker to inject malicious SQL this way. For providing defense in depth, you can use input validation - for applications that demand higher level of security, I use input validation not only in PHP, but in MySQL also (via triggers).
 
@@ -68,7 +79,7 @@ However, that wouldn't protect us if we needed to insert data inside `<script>` 
 - [OWASP - XSS (Cross-Site Scripting) Prevention Cheat Sheet](https://www.owasp.org/index.php/XSS_(Cross_Site_Scripting)_Prevention_Cheat_Sheet)
 - [HTML Purifier](http://htmlpurifier.org)
 
-### Data Exposure
+### Data exposure
 
 This framework provides user authentication functionallity, however if you intend to use it, in order for your users to be protected, you need to use HTTPS (HTTP + SSL). Without SSL encryption anyone could intercept the transmission from your browser to the server. Today, this is completely free thanks to initiatives like Let's Encrypt CA. I highly advise that you use HTTPS-related mechanisms like HSTS and HPKP as well.
 
