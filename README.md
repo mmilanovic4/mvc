@@ -88,5 +88,13 @@ This framework provides user authentication functionallity, however if you inten
 - [Let's Encrypt CA](https://letsencrypt.org)
 - [Free SSL Test](https://htbridge.com/ssl)
 
+## Documentation
+
+Great tool for generating documentation is [ApiGen](https://github.com/ApiGen/ApiGen). You can install it via Composer (I prefer to do it globally) and simply run:
+```
+apigen generate --source MVC --destination MVC/docs
+firefox docs/index.html &
+```
+
 ***
 **Note:** The reason for so many commits with only grammar fixes is that my girlfriend is studying languages, so she double checks my english every now and then.

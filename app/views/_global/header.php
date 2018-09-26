@@ -7,9 +7,9 @@
 	<meta name="description" content="Lorem ipsum dolor sit amet, consectetur adipiscing elit.">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<!-- CSS -->
-	<link rel="stylesheet" type="text/css" href="<?php Utils::generateLink('assets/css/main.css'); ?>">
+	<link rel="stylesheet" href="<?php Utils::generateLink('assets/css/main.css'); ?>">
 	<!-- Favicon -->
-	<link rel="icon" type="image/png" href="<?php Utils::generateLink('assets/favicon.png'); ?>">
+	<link rel="icon" href="<?php Utils::generateLink('assets/favicon.png'); ?>">
 </head>
 
 <body>
