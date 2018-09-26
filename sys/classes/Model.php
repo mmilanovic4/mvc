@@ -19,6 +19,9 @@ abstract class Model {
 
 	/**
 	 * Враћање свих редова из табеле
+	 * <code>
+	 * 	Model::getAll();
+	 * </code>
 	 * @return array
 	 */
 	public static function getAll() {
@@ -30,6 +33,9 @@ abstract class Model {
 
 	/**
 	 * Враћање реда из табеле који има одговарајући ID параметар
+	 * <code>
+	 * 	Model::getById($id);
+	 * </code>
 	 * @param int $id ID параметар
 	 * @return array
 	 */
@@ -125,6 +131,9 @@ abstract class Model {
 
 	/**
 	 * Уклањање реда у табели који има одговарајући ID параметар
+	 * <code>
+	 * 	Model::delete($id);
+	 * </code>
 	 * @param int $id ID параметар
 	 * @return bool
 	 */

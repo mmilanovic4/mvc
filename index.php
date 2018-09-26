@@ -13,7 +13,7 @@ $request = Http::getRequest();
 $routes = require_once './routes.php';
 $args = $foundRoute = null;
 foreach ($routes as $route) {
-	if (preg_match($route->getPattern(), $request, $args)) {
+	if ($route->isMatched($request, $args)) {
 		$foundRoute = $route;
 		unset($args[0]);
 		$args = array_values($args);

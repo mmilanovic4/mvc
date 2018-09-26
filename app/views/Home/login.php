@@ -12,6 +12,6 @@
 			<span>Password:</span>
 			<input type="password" name="password" required>
 		</label>
-		<button type="submit">Log In</button>
+		<button type="submit">Log in</button>
 	</form>
 </main>

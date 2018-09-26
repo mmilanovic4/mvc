@@ -26,7 +26,7 @@ class HomeController extends Controller {
 	 * @return void
 	 */
 	public function login() {
-		$this->set('title', 'Log In');
+		$this->set('title', 'Log in');
 
 		if (!Http::isPost()) {
 			if (Session::get(Config::USER_COOKIE) !== false) {

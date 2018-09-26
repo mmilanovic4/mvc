@@ -15,7 +15,7 @@ abstract class Controller {
 	 * Подразумевани метод сваког контролера
 	 * @return void
 	 */
-	public function index() {}
+	abstract public function index();
 
 	/**
 	 * Додавање нове променљиве у низ података

@@ -18,7 +18,7 @@ class UserModel extends Model {
 	 * @return array
 	 */
 	public static function getByEmailAndPassword($email, $password) {
-		$sql = 'SELECT * FROM ' . self::$tableName . ' WHERE `email` = ? AND `password` = ?;';
+		$sql = 'SELECT * FROM ' . self::$tableName . ' WHERE `email` = ? AND `password` = ? LIMIT 1;';
 		$pst = Database::getInstance()->prepare($sql);
 		$pst->bindValue(1, $email, PDO::PARAM_STR);
 		$pst->bindValue(2, $password, PDO::PARAM_STR);

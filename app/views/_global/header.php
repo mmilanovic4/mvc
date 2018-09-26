@@ -6,7 +6,10 @@
 	<meta charset="UTF-8">
 	<meta name="description" content="Lorem ipsum dolor sit amet, consectetur adipiscing elit.">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<!-- CSS -->
 	<link rel="stylesheet" type="text/css" href="<?php Utils::generateLink('assets/css/main.css'); ?>">
+	<!-- Favicon -->
+	<link rel="icon" type="image/png" href="<?php Utils::generateLink('assets/favicon.png'); ?>">
 </head>
 
 <body>
@@ -21,10 +24,10 @@
 		<ul>
 			<li><a href="<?php Utils::generateLink(''); ?>">Home</a></li>
 			<li><a href="<?php Utils::generateLink('tasks'); ?>">Tasks</a></li>
-			<?php if (!Session::get(Config::USER_COOKIE)): ?>
-			<li><a href="<?php Utils::generateLink('login'); ?>">Log In</a></li>
+			<?php if (Session::get(Config::USER_COOKIE) === false): ?>
+			<li><a href="<?php Utils::generateLink('login'); ?>">Log in</a></li>
 			<?php else:?>
-			<li><a onclick="return confirm('Are you sure?');" href="<?php Utils::generateLink('logout'); ?>">Log Out</a></li>
+			<li><a onclick="return confirm('Are you sure?');" href="<?php Utils::generateLink('logout'); ?>">Log out</a></li>
 			<?php endif; ?>
 		</ul>
 	</nav>

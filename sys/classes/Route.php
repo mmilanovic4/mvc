@@ -37,6 +37,16 @@ final class Route {
 	}
 
 	/**
+	 * Проверава да ли је рута одговарајућа
+	 * @param string $request Захтев
+	 * @param null $args Променљива прослеђена по референци у коју ћемо сачувати евентуалне аргументе при захтеву
+	 * @return bool
+	 */
+	public function isMatched($request, &$args) {
+		return preg_match($this->pattern, $request, $args);
+	}
+
+	/**
 	 * Враћа вредност $controller атрибута
 	 * @return string
 	 */
