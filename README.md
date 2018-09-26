@@ -47,14 +47,15 @@ it means that when user visits URI which matched RegEx `|^/?$|`, `index.php` wil
 
 ### RegEx cheat sheet
 
-Route               | Regex
-:-------------------|:-------------------
-`/`                 | \|^/?$\|
-`users/`            | \|^users/?$\|
-`users/create/`     | \|^users/create/?$\|
-`users/update/15/`  | \|^users/update/([0-9]+)/?$\|
-`users/delete/4/`   | \|^users/delete/([0-9]+)/?$\|
-Anything            | \|^.*$\|
+Route                    | Regex
+:------------------------|:-------------------
+`/`                      | \|^/?$\|
+`users/`                 | \|^users/?$\|
+`users/create/`          | \|^users/create/?$\|
+`users/update/15/`       | \|^users/update/([0-9]+)/?$\|
+`users/delete/4/`        | \|^users/delete/([0-9]+)/?$\|
+`store/iphone-8-64gb/`   | \|^store/([a-z0-9]+(?:\\-[a-z0-9]+)*)/?$\|
+Anything                 | \|^.*$\|
 
 ## Security
 
@@ -62,7 +63,7 @@ Framework provides basic security mechanisms.
 
 ### SQL injection
 
-`Model` class uses prepared statements, and `Database` class uses PDO's DSN charset parameter to set connection encoding to `utf8`. It is impossible for an attacker to inject malicious SQL this way. For providing defense in depth, you can use input validation - for applications that demand higher level of security, I use input validation not only in PHP, but in MySQL also (via triggers).
+`Model` class uses prepared statements and `Database` class uses PDO's DSN charset parameter to set connection encoding to `utf8`. It is impossible for an attacker to inject malicious SQL this way. For providing defense in depth, you can use input validation - for applications that demand higher level of security, I use input validation not only in PHP, but in MySQL also (via triggers).
 
 - [OWASP - SQL Injection Prevention Cheat Sheet](https://www.owasp.org/index.php/SQL_Injection_Prevention_Cheat_Sheet#Escaping_SQLi_in_PHP)
 
