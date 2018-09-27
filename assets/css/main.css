@@ -32,6 +32,11 @@ form > label > textarea {
 	resize: vertical;
 	max-height: 200px;
 }
+#logo {
+	display: block;
+	margin: 0 auto;
+	max-width: 100%;
+}
 /**
  * Tablets
  */

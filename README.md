@@ -1,3 +1,5 @@
+![PHP MVC Boilerplate](assets/img/logo.png)
+
 # Overview
 
  PHP MVC boilerplate with user authentication, basic security and MySQL CRUD operations.
