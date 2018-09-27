@@ -1,4 +1,6 @@
-![PHP MVC Boilerplate](assets/img/logo.png)
+<p align="center">
+	<img src="assets/img/logo.png" alt="PHP MVC Boilerplate">
+</p>
 
 # Overview
 
