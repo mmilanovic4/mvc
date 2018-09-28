@@ -10,9 +10,13 @@ abstract class Model {
 	 * @return string
 	 */
 	private static function getTableName() {
-		if (property_exists(get_called_class(), 'tableName')) {
-			return '`' . get_class_vars(get_called_class())['tableName'] . '`';
+		$className = get_called_class();
+
+		if (property_exists($className, 'tableName')) {
+			$classVars = get_class_vars($className);
+			return '`' . $classVars['tableName'] . '`';
 		}
+
 		ob_clean();
 		die('Model error - unknown property.');
 	}

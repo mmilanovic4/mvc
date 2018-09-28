@@ -1,7 +1,7 @@
 Options -Indexes
 
-<IfModule mod_rewrite.c>
+<IfModule rewrite_module>
 	RewriteEngine On
 	RewriteRule ^assets - [L]
-	RewriteRule ^(.*)$ index.php [L]
+	RewriteRule ^(?:.*)$ index.php [L]
 </IfModule>

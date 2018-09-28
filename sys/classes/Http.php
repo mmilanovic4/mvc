@@ -16,6 +16,21 @@ final class Http {
 	}
 
 	/**
+	 * Детектује да ли је коришћен HTTPS
+	 * @return bool
+	 */
+	final public static function isHttps() {
+		$c1 = filter_input(INPUT_SERVER, 'HTTPS') !== null;
+		$c2 = filter_input(INPUT_SERVER, 'SERVER_PORT', FILTER_SANITIZE_NUMBER_INT);
+		$c2 = intval($c2) === 443;
+
+		if ($c1 || $c2) {
+			return true;
+		}
+		return false;
+	}
+
+	/**
 	 * Нормализује и враћа захтевану путању
 	 * @return string
 	 */
