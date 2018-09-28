@@ -94,7 +94,7 @@ This framework provides user authentication functionallity, however if you inten
 
 ## Documentation
 
-Great tool for generating documentation is [ApiGen](https://github.com/ApiGen/ApiGen). You can install it via Composer (I prefer to do it globally) and simply run:
+Great tool for generating documentation is [ApiGen](https://github.com/ApiGen/ApiGen). You can install it via Composer (I prefer doing it globally) and simply run:
 ```
 apigen generate --source MVC --destination MVC/docs
 firefox docs/index.html &
