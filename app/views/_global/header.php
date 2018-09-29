@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 
 <head>
 	<title><?php echo isset($DATA['title']) ? $DATA['title'] . ' | MVC' : 'MVC'; ?></title>
