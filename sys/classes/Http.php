@@ -17,6 +17,7 @@ final class Http {
 
 	/**
 	 * Детектује да ли је коришћен HTTPS
+	 * @see http://php.net/manual/en/reserved.variables.server.php
 	 * @return bool
 	 */
 	final public static function isHttps() {

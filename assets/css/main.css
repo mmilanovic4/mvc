@@ -37,9 +37,7 @@ form > label > textarea {
 	margin: 0 auto;
 	max-width: 100%;
 }
-/**
- * Tablets
- */
+/* max-width: 768px */
 @media only screen and (max-width: 768px) {
 	.table-responsive {
 		max-width: 100%;

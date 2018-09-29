@@ -100,5 +100,10 @@ apigen generate --source MVC --destination MVC/docs
 firefox docs/index.html &
 ```
 
+Due to the recent problems with ApiGen and PHP 7.2, I used [phpDocumentor](https://www.phpdoc.org/) as an alternative. Install phpDocumentor and run:
+```
+phpdoc --directory MVC --target MVC/docs
+```
+
 ***
 **Note:** The reason for so many commits with only grammar fixes is that my girlfriend is studying languages, so she double checks my english every now and then.
