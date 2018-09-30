@@ -6,19 +6,22 @@
 abstract class Model {
 
 	/**
+	 * Назив табеле
+	 * @var string
+	 */
+	protected static $tableName = null;
+
+	/**
 	 * Враћање имена табеле
 	 * @return string
 	 */
 	private static function getTableName() {
-		$className = get_called_class();
-
-		if (property_exists($className, 'tableName')) {
-			$classVars = get_class_vars($className);
-			return '`' . $classVars['tableName'] . '`';
+		if (static::$tableName !== null) {
+			return static::$tableName;
 		}
 
 		ob_clean();
-		die('Model error - unknown property.');
+		die(sprintf('Model error - $tableName not defined for: %s.', get_called_class()));
 	}
 
 	/**

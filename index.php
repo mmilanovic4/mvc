@@ -25,7 +25,7 @@ foreach ($routes as $route) {
 $controller = './app/controllers/' . $foundRoute->getController() . 'Controller.php';
 if (!file_exists($controller)) {
 	ob_clean();
-	die('Controller error - file not found!');
+	die(sprintf('Controller error - file not found: %s.', $controller));
 }
 require_once $controller;
 
@@ -41,7 +41,7 @@ if (method_exists($worker, '__pre')) {
 // Позивање одговарајуће методе контролера
 if (!method_exists($worker, $foundRoute->getMethod())) {
 	ob_clean();
-	die('Controller error - method not found!');
+	die(sprintf('Controller error - method not found: %s->%s().', $className, $foundRoute->getMethod()));
 }
 
 $methodName = $foundRoute->getMethod();
@@ -70,7 +70,7 @@ if (!file_exists($headerView)) {
 
 if (!file_exists($view)) {
 	ob_clean();
-	die('View error - file not found!');
+	die(sprintf('View error - file not found: %s.', $view));
 }
 
 if (!file_exists($footerView)) {
