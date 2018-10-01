@@ -1,6 +1,6 @@
 <?php
 
-require_once './sys/autoloader.php';
+require_once './sys/autoload.php';
 
 error_reporting(0);
 
@@ -15,8 +15,6 @@ $args = $foundRoute = null;
 foreach ($routes as $route) {
 	if ($route->isMatched($request, $args)) {
 		$foundRoute = $route;
-		unset($args[0]);
-		$args = array_values($args);
 		break;
 	}
 }

@@ -15,7 +15,7 @@ class UserModel extends Model {
 	 * Аутентификација корисника коришћењем е-поште и лозинке
 	 * @param string $email Е-пошта корисника
 	 * @param string $password Хеш-вредност корисничке лозинке
-	 * @return array
+	 * @return object
 	 */
 	public static function getByEmailAndPassword($email, $password) {
 		$sql = 'SELECT * FROM ' . self::$tableName . ' WHERE `email` = ? AND `password` = ? LIMIT 1;';

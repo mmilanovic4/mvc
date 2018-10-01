@@ -44,7 +44,7 @@ abstract class Model {
 	 * 	Model::getById($id);
 	 * </code>
 	 * @param int $id ID параметар
-	 * @return array
+	 * @return object|bool
 	 */
 	public static function getById($id) {
 		$sql = 'SELECT * FROM ' . self::getTableName() . ' WHERE `id` = ?;';

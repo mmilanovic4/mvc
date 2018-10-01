@@ -43,7 +43,10 @@ final class Route {
 	 * @return bool
 	 */
 	public function isMatched($request, &$args) {
-		return preg_match($this->pattern, $request, $args);
+		$result = preg_match($this->pattern, $request, $args);
+		unset($args[0]);
+		$args = array_values($args);
+		return $result;
 	}
 
 	/**

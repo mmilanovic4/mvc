@@ -13,6 +13,11 @@
 - **Database server:** MySQL
 - PHP 7.x
 
+### Optional
+
+- ApiGen / phpDocumentor
+- PHPUnit
+
 ## Login operation
 
 If you imported database data from `sys/db/dump.sql`, you could authenticate with following credentials:
