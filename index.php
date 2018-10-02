@@ -61,19 +61,28 @@ $headerView = './app/views/_global/header.php';
 $footerView = './app/views/_global/footer.php';
 $view = './app/views/' . $foundRoute->getController() . '/' . $foundRoute->getMethod() . '.php';
 
+// Хедер
 if (!file_exists($headerView)) {
 	ob_clean();
 	die('View error - header file missing!');
 }
 
+// Главни шаблон приказа
 if (!file_exists($view)) {
 	ob_clean();
 	die(sprintf('View error - file not found: %s.', $view));
 }
 
+// Футер
 if (!file_exists($footerView)) {
 	ob_clean();
 	die('View error - footer file missing!');
+}
+
+// Додатни ЈаваСкрипт модул
+$jsModule = 'assets/js/modules/' . sprintf('%s_%s.js', $foundRoute->getController(), $foundRoute->getMethod());
+if (file_exists($jsModule)) {
+	$DATA['JAVASCRIPT_MODULE'] = $jsModule;
 }
 
 require_once $headerView;

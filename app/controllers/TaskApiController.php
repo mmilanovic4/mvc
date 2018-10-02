@@ -14,6 +14,8 @@ class TaskApiController extends ApiController {
 	 * @return void
 	 */
 	public function index() {
+		Http::checkMethodIsAllowed('GET');
+
 		$tasks = TaskModel::getAll();
 		$this->set('tasks', $tasks);
 	}

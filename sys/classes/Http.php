@@ -6,6 +6,16 @@
 final class Http {
 
 	/**
+	 * Детектује да ли је у питању HTTP GET захтев
+	 * @return bool
+	 */
+	final public static function isGet() {
+		$method = filter_input(INPUT_SERVER, 'REQUEST_METHOD');
+		$method = strtoupper($method);
+		return $method === 'GET';
+	}
+
+	/**
 	 * Детектује да ли је у питању HTTP POST захтев
 	 * @return bool
 	 */
@@ -13,6 +23,27 @@ final class Http {
 		$method = filter_input(INPUT_SERVER, 'REQUEST_METHOD');
 		$method = strtoupper($method);
 		return $method === 'POST';
+	}
+
+	/**
+	 * Проверава да ли је у питању одговарајућа HTTP метода
+	 * @param string|array $method Прихвата следеће формате: 'GET', 'GET|HEAD', 'GET|HEAD|POST'...
+	 * @return void
+	 */
+	final public static function checkMethodIsAllowed($allowedMethods = 'GET') {
+		$allowedMethods = explode('|', $allowedMethods);
+		$requestMethod = filter_input(INPUT_SERVER, 'REQUEST_METHOD');
+
+		foreach ($allowedMethods as $method) {
+			$method = strtoupper($method);
+			if ($method === $requestMethod) {
+				return;
+			}
+		}
+
+		http_response_code(405);
+		ob_clean();
+		die('HTTP 405 - Method Not Allowed.');
 	}
 
 	/**
@@ -47,7 +78,7 @@ final class Http {
 	 */
 	final public static function setJsonHeaders() {
 		header('Content-Type: application/json; charset=utf-8');
-		header('Access-Control-Allow-Origin: *'); // Измени пре продукције
+		// header('Access-Control-Allow-Origin: *');
 	}
 
 	/**
