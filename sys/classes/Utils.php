@@ -11,7 +11,7 @@ final class Utils {
 	 * @return string
 	 */
 	final public static function generateLink($path) {
-		echo Config::BASE . $path;
+		return Config::BASE . $path;
 	}
 
 	/**

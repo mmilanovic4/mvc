@@ -75,10 +75,14 @@ form > button {
 	max-width: 100%;
 }
 
-/* max-width: 768px */
+/**
+ * max-width: 768px
+ */
 @media only screen and (max-width: 768px) {
+
 	.table-responsive {
 		max-width: 100%;
 		overflow-x: scroll;
 	}
+
 }

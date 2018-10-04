@@ -16,18 +16,18 @@
 			<tbody>
 				<?php foreach ($DATA['tasks'] as $task): ?>
 				<tr>
-					<td><?php Security::escape($task->id); ?></td>
-					<td><?php Security::escape($task->name); ?></td>
-					<td><?php Security::escape($task->description); ?></td>
-					<td><?php Security::escape($task->author); ?></td>
-					<td><?php Security::escape($task->created_at); ?></td>
+					<td><?= Security::escape($task->id); ?></td>
+					<td><?= Security::escape($task->name); ?></td>
+					<td><?= Security::escape($task->description); ?></td>
+					<td><?= Security::escape($task->author); ?></td>
+					<td><?= Security::escape($task->created_at); ?></td>
 					<td>
-						<a href="<?php Utils::generateLink('tasks/update/' . $task->id) ?>">
+						<a href="<?= Utils::generateLink('tasks/update/' . $task->id) ?>">
 							Update
 						</a>
 					</td>
 					<td>
-						<a onclick="return confirm('Are you sure?');" href="<?php Utils::generateLink('tasks/delete/' . $task->id) ?>">
+						<a onclick="return confirm('Are you sure?');" href="<?= Utils::generateLink('tasks/delete/' . $task->id) ?>">
 							Delete
 						</a>
 					</td>
@@ -39,6 +39,6 @@
 	<?php endif; ?>
 
 	<p>
-		<a href="<?php Utils::generateLink('tasks/create'); ?>">Add task</a>
+		<a href="<?= Utils::generateLink('tasks/create'); ?>">Add task</a>
 	</p>
 </main>

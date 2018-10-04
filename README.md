@@ -81,7 +81,7 @@ Framework provides basic security mechanisms.
 For basic XSS protection (e.g. when we need to insert data in HTML body) you can use `Security` class. For example, if we need to insert `$DATA['user']` in our HTML, we would use following code:
 ```
 ...
-<p><?php Security::escape($DATA['user']); ?></p>
+<p><?= Security::escape($DATA['user']); ?></p>
 ...
 ```
 However, that wouldn't protect us if we needed to insert data inside `<script>` tag, for example. Visit OWASP page for further instructions. If you want to use third-party library for defense in depth, HTML Purifier is a good one.
