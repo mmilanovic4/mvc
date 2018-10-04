@@ -1,23 +1,52 @@
+* {
+	box-sizing: border-box;
+	margin: 0;
+	padding: 0;
+}
+
 body {
 	font-family: sans-serif;
 }
-h1, h2 {
+
+header h1, main, footer {
+	margin: 20px;
+}
+
+p {
+	margin: 20px 0;
+}
+
+h1 {
 	font-weight: normal;
 }
+
+nav ul {
+	list-style-type: none;
+}
+
+nav ul li {
+	display: inline;
+	margin-left: 20px;
+}
+
 table, th, td {
 	border: 1px solid #000;
 	border-collapse: collapse;
 }
+
 th, td {
 	padding: 10px;
 	text-align: left;
 }
+
 form > label, form > label > span {
 	display: block;
 }
+
 form > label > span {
 	padding: 5px 0;
 }
+
 form > label > input,
 form > label > textarea {
 	box-sizing: border-box;
@@ -25,18 +54,27 @@ form > label > textarea {
 	min-width: 250px;
 	padding: 5px;
 }
+
 form > button {
 	margin-top: 10px;
 }
+
 form > label > textarea {
 	resize: vertical;
 	max-height: 200px;
 }
+
+form > button {
+	cursor: pointer;
+	padding: 5px;
+}
+
 #logo {
 	display: block;
 	margin: 0 auto;
 	max-width: 100%;
 }
+
 /* max-width: 768px */
 @media only screen and (max-width: 768px) {
 	.table-responsive {
