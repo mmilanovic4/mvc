@@ -16,4 +16,15 @@ class SecurityTest extends \PHPUnit\Framework\TestCase {
 		$this->assertNotContains('<script>', $output);
 	}
 
+	/**
+	 * @test
+	 */
+	public function html_entities_are_escaped_img_tag() {
+		$input = '<img src=x onerror="alert(\"!\");">';
+		$output = Security::escape($input, true);
+
+		$this->assertContains('<img', $input);
+		$this->assertNotContains('<img', $output);
+	}
+
 }
