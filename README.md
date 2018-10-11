@@ -84,7 +84,7 @@ For basic XSS protection (e.g. when we need to insert data in HTML body) you can
 <p><?= Security::escape($DATA['user']); ?></p>
 ...
 ```
-However, that wouldn't protect us if we needed to insert data inside `<script>` tag, for example. Visit OWASP page for further instructions. If you want to use third-party library for defense in depth, HTML Purifier is a good one.
+However, that wouldn't protect us if we needed to insert data inside `<script>` tag, for example. Visit OWASP page for further instructions. If you want to use third-party library for defense in depth, HTML Purifier is a good one. For API responses in JavaScript, don't forget to use safe JavaScript functions and properties (e.g. `element.textContent`, jQuery `.text()` function etc.) when you need to populate the DOM.
 
 - [OWASP - XSS (Cross-Site Scripting) Prevention Cheat Sheet](https://www.owasp.org/index.php/XSS_(Cross_Site_Scripting)_Prevention_Cheat_Sheet)
 - [HTML Purifier](http://htmlpurifier.org)

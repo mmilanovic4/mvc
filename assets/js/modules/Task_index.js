@@ -1,7 +1,7 @@
 /**
  * Тестирање да ли ЈаваСкрипт модули и API позив раде
  */
-window.onload = function () {
+function fetchTasks () {
 	let xhr = new XMLHttpRequest();
 	xhr.open('GET', 'http://localhost/dev/MVC/api/tasks');
 
@@ -14,3 +14,5 @@ window.onload = function () {
 
 	xhr.send();
 };
+
+window.onload = fetchTasks();
