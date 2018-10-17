@@ -7,7 +7,7 @@ error_reporting(0);
 Session::begin();
 
 // Обрада захтева
-$request = Http::getRequest();
+$request = Http::getRequestedPath();
 
 // Детектовање руте
 $routes = require_once './routes.php';

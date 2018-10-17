@@ -5,6 +5,12 @@
  */
 class UserModelTest extends \PHPUnit\Framework\TestCase {
 
+	/**
+	 * Тестирање објекта који представља корисника
+	 * @param object $user Корисник
+	 * @param int $id Опциони ИД параметар
+	 * @return void
+	 */
 	private function userAsserts($user, $id = false) {
 		$this->assertInstanceOf(stdClass::class, $user);
 		$this->assertObjectHasAttribute('id', $user);

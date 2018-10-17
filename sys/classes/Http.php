@@ -66,7 +66,7 @@ final class Http {
 	 * Нормализује и враћа захтевану путању
 	 * @return string
 	 */
-	final public static function getRequest() {
+	final public static function getRequestedPath() {
 		$request = filter_input(INPUT_SERVER, 'REQUEST_URI');
 		$request = substr($request, strlen(Config::PATH));
 		return $request;
