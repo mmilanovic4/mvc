@@ -15,7 +15,8 @@ class CurlTest extends \PHPUnit\Framework\TestCase {
 		$response = Curl::request(
 			Curl::GET,
 			'https://httpbin.org/get',
-			$query
+			$query,
+			false
 		);
 
 		$response = json_decode($response, true);
@@ -46,6 +47,36 @@ class CurlTest extends \PHPUnit\Framework\TestCase {
 		$this->assertEquals($userAgent, Curl::USER_AGENT);
 		$this->assertEquals($query, $args);
 		$this->assertArrayHasKey('Cache-Control', $response['headers']);
+	}
+
+	/**
+	 * @test
+	 */
+	public function auth_request() {
+		$username = 'john.doe';
+		$password = 'admin';
+
+		$response = Curl::request(
+			Curl::GET,
+			"https://httpbin.org/basic-auth/$username/$password",
+			false,
+			false,
+			Curl::auth_params(Curl::AUTH_BASIC, $username, $password)
+		);
+
+		$response = json_decode($response, true);
+		$this->assertTrue($response['authenticated']);
+
+		$response = Curl::request(
+			Curl::GET,
+			"https://httpbin.org/digest-auth/auth/$username/$password",
+			false,
+			false,
+			Curl::auth_params(Curl::AUTH_DIGEST, $username, $password)
+		);
+
+		$response = json_decode($response, true);
+		$this->assertTrue($response['authenticated']);
 	}
 
 }

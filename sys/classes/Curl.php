@@ -18,6 +18,18 @@ class Curl {
 	const POST = CURLOPT_POST;
 
 	/**
+	 * HTTP Basic аутентификација
+	 * @var int
+	 */
+	const AUTH_BASIC = CURLAUTH_BASIC;
+
+	/**
+	 * HTTP Digest аутентификација
+	 * @var int
+	 */
+	const AUTH_DIGEST = CURLAUTH_DIGEST;
+
+	/**
 	 * Број секунди дозвољен cURL функцији да се извршава
 	 * @var int
 	 */
@@ -43,11 +55,12 @@ class Curl {
 	 * Шаблон захтева
 	 * @param int $method Тип захтева
 	 * @param string $url Униформни локатор ресурса
-	 * @param array $query Упит (може бити прослеђен и кроз URL за захтеве типа GET)
-	 * @param array $headers Заглавља - провери белу листу
+	 * @param array|bool $query Упит (може бити прослеђен и кроз URL за захтеве типа GET)
+	 * @param array|bool $headers Заглавља - провери белу листу
+	 * @param array|bool $auth HTTP аутентификација @see Curl::auth_params
 	 * @return string|bool
 	 */
-	final public static function request($method = self::GET, $url, $query = [], $headers = []) {
+	final public static function request($method = self::GET, $url, $query = false, $headers = false, $auth = false) {
 		if (!in_array($method, [self::GET, self::POST])) {
 			return false;
 		}
@@ -73,14 +86,24 @@ class Curl {
 			CURLOPT_USERAGENT => self::USER_AGENT,
 		]);
 
-		$headersParsed = [];
-		foreach ($headers as $header => $value) {
-			$header = ucwords(strtolower($header), '-');
-			if (in_array($header, self::WHITELISTED_HEADERS)) {
-				$headersParsed[] = "$header: $value";
+		if (is_array($headers)) {
+			$headersParsed = [];
+
+			foreach ($headers as $header => $value) {
+				$header = ucwords(strtolower($header), '-');
+				if (in_array($header, self::WHITELISTED_HEADERS)) {
+					$headersParsed[] = "$header: $value";
+				}
+			}
+
+			curl_setopt($ch, CURLOPT_HTTPHEADER, $headersParsed);
+		}
+
+		if ($auth) {
+			foreach ($auth as $option => $value) {
+				curl_setopt($ch, $option, $value);
 			}
 		}
-		curl_setopt($ch, CURLOPT_HTTPHEADER, $headersParsed);
 
 		$res = curl_exec($ch);
 		$status = intval(curl_getinfo($ch, CURLINFO_RESPONSE_CODE));
@@ -92,6 +115,28 @@ class Curl {
 		}
 
 		return $res;
+	}
+
+	/**
+	 * Припрема параметара за HTTP аутентификацију
+	 * @param int $type Тип аутентификације
+	 * @param string $username Корисничко име
+	 * @param string $password Лозинка
+	 * @return array|bool
+	 */
+	final public static function auth_params($type = self::AUTH_BASIC, $username, $password) {
+		if (!in_array($type, [self::AUTH_BASIC, self::AUTH_DIGEST])) {
+			return false;
+		}
+
+		if (!is_string($username) || !is_string($password)) {
+			return false;
+		}
+
+		return [
+			CURLOPT_HTTPAUTH => $type,
+			CURLOPT_USERPWD => $username . ':' . $password
+		];
 	}
 
 	/**
