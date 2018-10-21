@@ -27,7 +27,7 @@ If you imported database data from `sys/db/dump.sql`, you could authenticate wit
 
 If you're manually adding user to `users` table, don't forget to append salt from `sys/Config.php` before hashing with SHA-512 algorithm.
 
-![Login form](https://i.imgur.com/EPeNbmO.png)
+![Login form](assets/img/login.png)
 
 ## CRUD operations
 
@@ -39,7 +39,7 @@ Each database table should have appropriate model file. For example, table `task
 - update
 - delete
 
-![CRUD operations](https://i.imgur.com/6j12XDW.png)
+![CRUD operations](assets/img/tasks.png)
 
 ## Router
 

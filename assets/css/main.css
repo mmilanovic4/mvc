@@ -4,8 +4,13 @@
 	padding: 0;
 }
 
+html {
+	font-size: 18px;
+}
+
 body {
 	font-family: sans-serif;
+	font-size: 1rem;
 }
 
 header h1, main, footer {
@@ -44,29 +49,43 @@ form > label, form > label > span {
 }
 
 form > label > span {
-	padding: 5px 0;
+	padding: 10px 0;
 }
 
 form > label > input,
-form > label > textarea {
-	box-sizing: border-box;
-	max-width: 250px;
-	min-width: 250px;
-	padding: 5px;
-}
-
+form > label > textarea,
 form > button {
-	margin-top: 10px;
+	border: 1px solid #bbb;
+	font-size: .9rem;
+	padding: 10px;
+	width: 250px;
+}
+
+form > label > input:focus,
+form > label > textarea:focus,
+form > button:focus {
+	outline: 1px solid #00f;
 }
 
 form > label > textarea {
-	resize: vertical;
+	font-family: inherit;
 	max-height: 200px;
+	resize: vertical;
 }
 
 form > button {
+	background: #bbb;
 	cursor: pointer;
-	padding: 5px;
+	margin-top: 20px;
+}
+
+footer {
+	border-top: 1px solid #bbb;
+	font-size: .9rem;
+}
+
+footer > p {
+	margin: 10px 0;
 }
 
 #logo {
@@ -80,9 +99,17 @@ form > button {
  */
 @media only screen and (max-width: 960px) {
 
+	body {
+		font-size: .9rem;
+	}
+
 	.table-responsive {
 		max-width: 100%;
 		overflow-x: scroll;
+	}
+
+	footer {
+		font-size: .85rem;
 	}
 
 }
