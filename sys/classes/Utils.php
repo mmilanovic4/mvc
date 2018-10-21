@@ -5,6 +5,8 @@
  */
 final class Utils {
 
+	use StringUtils;
+
 	/**
 	 * Исписивање нормализованог линка
 	 * @param string $path Линк
@@ -40,6 +42,18 @@ final class Utils {
 	}
 
 	/**
+	 * "Искључивање" конструктора.
+	 */
+	private function __construct() {}
+
+}
+
+/**
+ * Помоћне функције за рад са стринговима
+ */
+trait StringUtils {
+
+	/**
 	 * Провера да ли се одређени стринг завршава са другим подстрингом
 	 * @param string $haystack Први стринг
 	 * @param string $needle Други стринг
@@ -60,10 +74,5 @@ final class Utils {
 		$haystack = substr($haystack, 0, strlen($needle));
 		return $haystack === $needle;
 	}
-
-	/**
-	 * "Искључивање" конструктора.
-	 */
-	private function __construct() {}
 
 }
