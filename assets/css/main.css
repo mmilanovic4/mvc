@@ -76,9 +76,9 @@ form > button {
 }
 
 /**
- * max-width: 768px
+ * max-width: 960px
  */
-@media only screen and (max-width: 768px) {
+@media only screen and (max-width: 960px) {
 
 	.table-responsive {
 		max-width: 100%;

@@ -21,6 +21,7 @@
 ## Login operation
 
 If you imported database data from `sys/db/dump.sql`, you could authenticate with following credentials:
+
 - john.doe@example.com / admin
 - jane.doe@example.com / admin
 
@@ -31,6 +32,7 @@ If you're manually adding user to `users` table, don't forget to append salt fro
 ## CRUD operations
 
 Each database table should have appropriate model file. For example, table `tasks` have `app/models/TaskModel.php`. There you need to hardcode table name in protected `$tableName` property and eventually add new functions. Provided functions with basic model are:
+
 - read
 - readAll
 - create
@@ -42,16 +44,19 @@ Each database table should have appropriate model file. For example, table `task
 ## Router
 
 All routes should be placed inside `routes.php`. Each route must have following properties:
+
 - Name of the controller whom the route belongs to
 - Name of the controller's method (the route callback)
 - Request URI, represented via PCRE
 
 For example, if we have following code:
+
 ```
 ...
 new Route('Home', 'index', '|^/?$|'),
 ...
 ```
+
 it means that when user visits URI which matched RegEx `|^/?$|`, `index.php` will instantiate `HomeController.php` and call his `index` method.
 
 ### RegEx cheat sheet
@@ -79,11 +84,13 @@ Framework provides basic security mechanisms.
 ### XSS
 
 For basic XSS protection (e.g. when we need to insert data in HTML body) you can use `Security` class. For example, if we need to insert `$DATA['user']` in our HTML, we would use following code:
+
 ```
 ...
 <p><?= Security::escape($DATA['user']); ?></p>
 ...
 ```
+
 However, that wouldn't protect us if we needed to insert data inside `<script>` tag, for example. Visit OWASP page for further instructions. If you want to use third-party library for defense in depth, HTML Purifier is a good one. For API responses in JavaScript, don't forget to use safe JavaScript functions and properties (e.g. `element.textContent`, jQuery `.text()` function etc.) when you need to populate the DOM.
 
 - [OWASP - XSS (Cross-Site Scripting) Prevention Cheat Sheet](https://www.owasp.org/index.php/XSS_(Cross_Site_Scripting)_Prevention_Cheat_Sheet)
@@ -100,15 +107,18 @@ This framework provides user authentication functionallity, however if you inten
 ## Documentation
 
 Great tool for generating documentation is [ApiGen](https://github.com/ApiGen/ApiGen). You can install it via Composer (I prefer doing it globally) and simply run:
+
 ```
 apigen generate --source MVC --destination MVC/docs
 firefox docs/index.html &
 ```
 
 Due to the recent problems with ApiGen and PHP 7.2, I used [phpDocumentor](https://www.phpdoc.org/) as an alternative. Install phpDocumentor and run:
+
 ```
 phpdoc --directory MVC --target MVC/docs
 ```
 
 ***
+
 **Note:** The reason for so many commits with only grammar fixes is that my girlfriend is studying languages, so she double checks my english every now and then.
