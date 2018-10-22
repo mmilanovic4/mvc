@@ -17,4 +17,15 @@ abstract class ApiController extends Controller {
 		}
 	}
 
+	/**
+	 * Овај метод шаље API одговор
+	 * @return void
+	 */
+	final public function __post() {
+		ob_clean();
+		Http::setJsonHeaders();
+		echo json_encode($this->getData(), JSON_UNESCAPED_UNICODE);
+		die;
+	}
+
 }

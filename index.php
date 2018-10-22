@@ -41,20 +41,16 @@ if (!method_exists($worker, $foundRoute->getMethod())) {
 	ob_clean();
 	die(sprintf('Controller error - method not found: %s->%s().', $className, $foundRoute->getMethod()));
 }
-
 $methodName = $foundRoute->getMethod();
 call_user_func_array([$worker, $methodName], $args);
 
+// Позивање __post метода
+if (method_exists($worker, '__post')) {
+	call_user_func([$worker, '__post']);
+}
+
 // Преузимање глобалних података
 $DATA = $worker->getData();
-
-// API одговор
-if ($worker instanceof ApiController) {
-	ob_clean();
-	Http::setJsonHeaders();
-	echo json_encode($DATA, JSON_UNESCAPED_UNICODE);
-	die;
-}
 
 // Учитавање одговарајућег шаблона приказа
 $headerView = './app/views/_global/header.php';
