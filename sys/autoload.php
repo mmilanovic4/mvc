@@ -24,7 +24,7 @@ spl_autoload_register(function($className) {
 			return true;
 		} else {
 			ob_clean();
-			die('Configuration error - Config file not found!');
+			die('AUTOLOAD: Configuration file not found.');
 		}
 	}
 	// Класа није пронађена

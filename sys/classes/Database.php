@@ -35,7 +35,7 @@ final class Database {
 			} catch (PDOException $e) {
 				error_log($e->getMessage());
 				ob_clean();
-				die('Database connection error!');
+				die('DATABASE: Connection error.');
 			}
 		}
 		return self::$dbh;

@@ -77,7 +77,7 @@ class HomeController extends Controller {
 	public function e404() {
 		http_response_code(404);
 		ob_clean();
-		die('HTTP 404 - Not Found.');
+		die('HTTP: 404 not found.');
 	}
 
 }

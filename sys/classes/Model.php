@@ -21,7 +21,7 @@ abstract class Model {
 		}
 
 		ob_clean();
-		die(sprintf('Model error - $tableName not defined for: %s.', get_called_class()));
+		die('MODEL: Table name not defined.');
 	}
 
 	/**
@@ -71,7 +71,7 @@ abstract class Model {
 
 		if (!is_array($data) || count($data) === 0) {
 			ob_clean();
-			die('Model error - wrong input.');
+			die('MODEL: Bad input for create.');
 		}
 
 		foreach ($data as $field => $value) {
@@ -115,7 +115,7 @@ abstract class Model {
 
 		if (!is_array($data) || count($data) === 0) {
 			ob_clean();
-			die('Model error - wrong input.');
+			die('MODEL: Bad input for update.');
 		}
 
 		foreach ($data as $field => $value) {

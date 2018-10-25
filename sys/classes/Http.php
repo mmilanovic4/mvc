@@ -43,7 +43,7 @@ final class Http {
 
 		http_response_code(405);
 		ob_clean();
-		die('HTTP 405 - Method Not Allowed.');
+		die('HTTP: 405 method not allowed.');
 	}
 
 	/**

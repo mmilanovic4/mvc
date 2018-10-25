@@ -23,7 +23,7 @@ foreach ($routes as $route) {
 $controller = './app/controllers/' . $foundRoute->getController() . 'Controller.php';
 if (!file_exists($controller)) {
 	ob_clean();
-	die(sprintf('Controller error - file not found: %s.', $controller));
+	die('CONTROLLER: File not found.');
 }
 require_once $controller;
 
@@ -39,7 +39,7 @@ if (method_exists($worker, '__pre')) {
 // Позивање одговарајуће методе контролера
 if (!method_exists($worker, $foundRoute->getMethod())) {
 	ob_clean();
-	die(sprintf('Controller error - method not found: %s->%s().', $className, $foundRoute->getMethod()));
+	die('CONTROLLER: Method not found.');
 }
 $methodName = $foundRoute->getMethod();
 call_user_func_array([$worker, $methodName], $args);
@@ -60,19 +60,19 @@ $view = './app/views/' . $foundRoute->getController() . '/' . $foundRoute->getMe
 // Хедер
 if (!file_exists($headerView)) {
 	ob_clean();
-	die('View error - header file missing!');
+	die('VIEW: Header file not found.');
 }
 
 // Главни шаблон приказа
 if (!file_exists($view)) {
 	ob_clean();
-	die(sprintf('View error - file not found: %s.', $view));
+	die('VIEW: Main template file not found.');
 }
 
 // Футер
 if (!file_exists($footerView)) {
 	ob_clean();
-	die('View error - footer file missing!');
+	die('VIEW: Footer file not found.');
 }
 
 // Додатни ЈаваСкрипт модул

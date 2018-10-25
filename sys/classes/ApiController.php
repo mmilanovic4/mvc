@@ -13,7 +13,7 @@ abstract class ApiController extends Controller {
 		if (Session::get(Config::USER_COOKIE) === false) {
 			http_response_code(403);
 			ob_clean();
-			die('HTTP 403 - Forbidden.');
+			die('HTTP: 403 forbidden.');
 		}
 	}
 

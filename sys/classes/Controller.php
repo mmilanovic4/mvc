@@ -35,4 +35,14 @@ abstract class Controller {
 		return $this->data;
 	}
 
+	/**
+	 * Метод који се извршава пре index метода
+	 */
+	public function __pre() {}
+
+		/**
+	 * Метод који се извршава после index метода
+	 */
+	public function __post() {}
+
 }
