@@ -12,15 +12,19 @@ class TaskController extends AuthController {
 	public function index() {
 		$this->set('title', 'Tasks');
 
-		$tasks = TaskModel::getAll();
+		$tasks = TaskModel::getAllFromInnerJoinWithUsers();
 		foreach ($tasks as $task) {
 			$task->created_at = Utils::formatDateAndTime($task->created_at);
-			$user = UserModel::getById($task->user_id);
 
-			if (!$user) {
-				$task->user = 'N/A';
+			$task->user = null;
+			if (!empty($task->first_name) && !empty($task->last_name)) {
+				$task->user = $task->first_name . ' ' . $task->last_name;
+			} elseif (!empty($task->first_name)) {
+				$task->user = $task->first_name;
+			} elseif (!empty($task->last_name)) {
+				$task->user = $task->last_name;
 			} else {
-				$task->user = $user->first_name . ' ' . $user->last_name;
+				$task->user = 'N/A';
 			}
 		}
 		$this->set('tasks', $tasks);

@@ -15,8 +15,8 @@ abstract class Model {
 	 * Враћање имена табеле
 	 * @return string
 	 */
-	private static function getTableName() {
-		if (static::$tableName !== null) {
+	protected static function getTableName() {
+		if (!empty(static::$tableName)) {
 			return static::$tableName;
 		}
 
@@ -32,7 +32,9 @@ abstract class Model {
 	 * @return array
 	 */
 	public static function getAll() {
-		$sql = 'SELECT * FROM ' . self::getTableName() . ';';
+		$tableName = self::getTableName();
+
+		$sql = "SELECT * FROM `$tableName`;";
 		$pst = Database::getInstance()->prepare($sql);
 		$pst->execute();
 		return $pst->fetchAll();
@@ -47,7 +49,9 @@ abstract class Model {
 	 * @return object|bool
 	 */
 	public static function getById($id) {
-		$sql = 'SELECT * FROM ' . self::getTableName() . ' WHERE `id` = ?;';
+		$tableName = self::getTableName();
+
+		$sql = "SELECT * FROM `$tableName` WHERE `id` = ?;";
 		$pst = Database::getInstance()->prepare($sql);
 		$pst->bindValue(1, intval($id), PDO::PARAM_INT);
 		$pst->execute();
@@ -83,7 +87,7 @@ abstract class Model {
 		$fields = '(' . implode(', ', $fields) . ')';
 		$placeholders = '(' . implode(', ', $placeholders) . ')';
 
-		$sql = "INSERT INTO $tableName $fields VALUES $placeholders;";
+		$sql = "INSERT INTO `$tableName` $fields VALUES $placeholders;";
 		$pst = Database::getInstance()->prepare($sql);
 
 		if (!$pst) {
@@ -126,7 +130,7 @@ abstract class Model {
 		$fields = implode(', ', $fields);
 		$values[] = intval($id);
 
-		$sql = "UPDATE $tableName SET $fields WHERE `id` = ?;";
+		$sql = "UPDATE `$tableName` SET $fields WHERE `id` = ?;";
 		$pst = Database::getInstance()->prepare($sql);
 
 		if (!$pst) {
@@ -145,7 +149,9 @@ abstract class Model {
 	 * @return bool
 	 */
 	public static function delete($id) {
-		$sql = 'DELETE FROM ' . self::getTableName() . ' WHERE `id` = ?;';
+		$tableName = self::getTableName();
+
+		$sql = "DELETE FROM `$tableName` WHERE `id` = ?;";
 		$pst = Database::getInstance()->prepare($sql);
 		$pst->bindValue(1, intval($id), PDO::PARAM_INT);
 		return $pst->execute();
