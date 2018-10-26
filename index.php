@@ -52,24 +52,24 @@ if (method_exists($worker, '__post')) {
 // Преузимање глобалних података
 $DATA = $worker->getData();
 
-// Учитавање одговарајућег шаблона приказа
+// Путање ка шаблонима
 $headerView = './app/views/_global/header.php';
 $footerView = './app/views/_global/footer.php';
 $view = './app/views/' . $foundRoute->getController() . '/' . $foundRoute->getMethod() . '.php';
 
-// Хедер
+// Учитавање хедера
 if (!file_exists($headerView)) {
 	ob_clean();
 	die('VIEW: Header file not found.');
 }
 
-// Главни шаблон приказа
+// Учитавање главног шаблона приказа
 if (!file_exists($view)) {
 	ob_clean();
 	die('VIEW: Main template file not found.');
 }
 
-// Футер
+// Учитавање футера
 if (!file_exists($footerView)) {
 	ob_clean();
 	die('VIEW: Footer file not found.');

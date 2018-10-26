@@ -9,7 +9,7 @@
 					<th>ID</th>
 					<th>Name</th>
 					<th>Description</th>
-					<th>Author</th>
+					<th>User</th>
 					<th>Created at</th>
 					<th colspan="2"></th>
 			</thead>
@@ -19,7 +19,7 @@
 					<td><?= Security::escape($task->id); ?></td>
 					<td><?= Security::escape($task->name); ?></td>
 					<td><?= Security::escape($task->description); ?></td>
-					<td><?= Security::escape($task->author); ?></td>
+					<td><?= Security::escape($task->user); ?></td>
 					<td><?= Security::escape($task->created_at); ?></td>
 					<td>
 						<a href="<?= Utils::generateLink('tasks/update/' . $task->id) ?>">

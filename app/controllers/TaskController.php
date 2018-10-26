@@ -15,12 +15,12 @@ class TaskController extends AuthController {
 		$tasks = TaskModel::getAll();
 		foreach ($tasks as $task) {
 			$task->created_at = Utils::formatDateAndTime($task->created_at);
-			$author = UserModel::getById($task->author);
+			$user = UserModel::getById($task->user_id);
 
-			if (!$author) {
-				$task->author = 'N/A';
+			if (!$user) {
+				$task->user = 'N/A';
 			} else {
-				$task->author = $author->first_name . ' ' . $author->last_name;
+				$task->user = $user->first_name . ' ' . $user->last_name;
 			}
 		}
 		$this->set('tasks', $tasks);
@@ -45,11 +45,11 @@ class TaskController extends AuthController {
 			return;
 		}
 
-		$author = intval(Session::get(Config::USER_COOKIE));
+		$userId = intval(Session::get(Config::USER_COOKIE));
 		$task = TaskModel::create([
+			'user_id' => $userId,
 			'name' => $name,
-			'description' => $description,
-			'author' => $author
+			'description' => $description
 		]);
 
 		if (!$task) {
@@ -84,11 +84,11 @@ class TaskController extends AuthController {
 			return;
 		}
 
-		$author = intval(Session::get(Config::USER_COOKIE));
+		$userId = intval(Session::get(Config::USER_COOKIE));
 		$status = TaskModel::update($id, [
+			'user_id' => $userId,
 			'name' => $name,
-			'description' => $description,
-			'author' => $author
+			'description' => $description
 		]);
 
 		if (!$status) {
