@@ -32,9 +32,9 @@ abstract class Model {
 	 * @return array
 	 */
 	public static function getAll() {
-		$tableName = self::getTableName();
+		$tableName = '`' . self::getTableName() . '`';
 
-		$sql = "SELECT * FROM `$tableName`;";
+		$sql = "SELECT * FROM $tableName;";
 		$pst = Database::getInstance()->prepare($sql);
 		$pst->execute();
 		return $pst->fetchAll();
@@ -49,9 +49,9 @@ abstract class Model {
 	 * @return object|bool
 	 */
 	public static function getById($id) {
-		$tableName = self::getTableName();
+		$tableName = '`' . self::getTableName() . '`';
 
-		$sql = "SELECT * FROM `$tableName` WHERE `id` = ?;";
+		$sql = "SELECT * FROM $tableName WHERE `id` = ?;";
 		$pst = Database::getInstance()->prepare($sql);
 		$pst->bindValue(1, intval($id), PDO::PARAM_INT);
 		$pst->execute();
@@ -70,7 +70,7 @@ abstract class Model {
 	 * @return int|bool
 	 */
 	public static function create($data) {
-		$tableName = self::getTableName();
+		$tableName = '`' . self::getTableName() . '`';
 		$fields = $placeholders = $values = [];
 
 		if (!is_array($data) || count($data) === 0) {
@@ -87,7 +87,7 @@ abstract class Model {
 		$fields = '(' . implode(', ', $fields) . ')';
 		$placeholders = '(' . implode(', ', $placeholders) . ')';
 
-		$sql = "INSERT INTO `$tableName` $fields VALUES $placeholders;";
+		$sql = "INSERT INTO $tableName $fields VALUES $placeholders;";
 		$pst = Database::getInstance()->prepare($sql);
 
 		if (!$pst) {
@@ -114,7 +114,7 @@ abstract class Model {
 	 * @return bool
 	 */
 	public static function update($id, $data) {
-		$tableName = self::getTableName();
+		$tableName = '`' . self::getTableName() . '`';
 		$fields = $values = [];
 
 		if (!is_array($data) || count($data) === 0) {
@@ -130,7 +130,7 @@ abstract class Model {
 		$fields = implode(', ', $fields);
 		$values[] = intval($id);
 
-		$sql = "UPDATE `$tableName` SET $fields WHERE `id` = ?;";
+		$sql = "UPDATE $tableName SET $fields WHERE `id` = ?;";
 		$pst = Database::getInstance()->prepare($sql);
 
 		if (!$pst) {
@@ -149,9 +149,9 @@ abstract class Model {
 	 * @return bool
 	 */
 	public static function delete($id) {
-		$tableName = self::getTableName();
+		$tableName = '`' . self::getTableName() . '`';
 
-		$sql = "DELETE FROM `$tableName` WHERE `id` = ?;";
+		$sql = "DELETE FROM $tableName WHERE `id` = ?;";
 		$pst = Database::getInstance()->prepare($sql);
 		$pst->bindValue(1, intval($id), PDO::PARAM_INT);
 		return $pst->execute();
