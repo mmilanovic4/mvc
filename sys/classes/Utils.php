@@ -12,11 +12,12 @@ final class Utils {
 
 	/**
 	 * Исписивање нормализованог линка
+	 * За апсолутне путање: заменимо PATH са BASE
 	 * @param string $path Линк
 	 * @return string
 	 */
 	final public static function generateLink($path) {
-		return Config::BASE . $path;
+		return Config::PATH . $path;
 	}
 
 	/**
