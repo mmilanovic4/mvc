@@ -15,7 +15,6 @@
 <body>
 
 	<header>
-		<img id="logo" src="<?= Utils::generateLink('assets/img/logo.png'); ?>" alt="PHP MVC Boilerplate">
 		<?php if (isset($DATA['title'])): ?>
 		<h1><?= Security::escape($DATA['title']); ?></h1>
 		<?php endif;?>
