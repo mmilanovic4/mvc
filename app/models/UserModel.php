@@ -25,6 +25,7 @@ class UserModel extends Model {
 		$pst->bindValue(1, $email, PDO::PARAM_STR);
 		$pst->bindValue(2, $password, PDO::PARAM_STR);
 		$pst->execute();
+
 		return $pst->fetch();
 	}
 

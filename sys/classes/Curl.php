@@ -39,7 +39,7 @@ class Curl {
 	 * User-Agent заглавље
 	 * @var string
 	 */
-	const USER_AGENT = 'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:62.0) Gecko/20100101 Firefox/62.0';
+	const USER_AGENT = 'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:63.0) Gecko/20100101 Firefox/63.0';
 
 	/**
 	 * Бела листа заглавља

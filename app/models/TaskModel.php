@@ -30,6 +30,7 @@ class TaskModel extends Model {
 END;
 		$pst = Database::getInstance()->prepare($sql);
 		$pst->execute();
+
 		return $pst->fetchAll();
 	}
 

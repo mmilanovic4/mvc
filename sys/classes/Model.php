@@ -37,6 +37,7 @@ abstract class Model {
 		$sql = "SELECT * FROM $tableName;";
 		$pst = Database::getInstance()->prepare($sql);
 		$pst->execute();
+
 		return $pst->fetchAll();
 	}
 
@@ -55,6 +56,7 @@ abstract class Model {
 		$pst = Database::getInstance()->prepare($sql);
 		$pst->bindValue(1, intval($id), PDO::PARAM_INT);
 		$pst->execute();
+
 		return $pst->fetch();
 	}
 
@@ -154,6 +156,7 @@ abstract class Model {
 		$sql = "DELETE FROM $tableName WHERE `id` = ?;";
 		$pst = Database::getInstance()->prepare($sql);
 		$pst->bindValue(1, intval($id), PDO::PARAM_INT);
+
 		return $pst->execute();
 	}
 
