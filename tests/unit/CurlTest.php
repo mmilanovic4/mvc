@@ -61,7 +61,7 @@ class CurlTest extends \PHPUnit\Framework\TestCase {
 			"https://httpbin.org/basic-auth/$username/$password",
 			false,
 			false,
-			Curl::auth_params(Curl::AUTH_BASIC, $username, $password)
+			Curl::authParams(Curl::AUTH_BASIC, $username, $password)
 		);
 
 		$response = json_decode($response, true);
@@ -72,7 +72,7 @@ class CurlTest extends \PHPUnit\Framework\TestCase {
 			"https://httpbin.org/digest-auth/auth/$username/$password",
 			false,
 			false,
-			Curl::auth_params(Curl::AUTH_DIGEST, $username, $password)
+			Curl::authParams(Curl::AUTH_DIGEST, $username, $password)
 		);
 
 		$response = json_decode($response, true);

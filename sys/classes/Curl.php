@@ -57,7 +57,7 @@ class Curl {
 	 * @param string $url Униформни локатор ресурса
 	 * @param array|bool $query Упит (може бити прослеђен и кроз URL за захтеве типа GET)
 	 * @param array|bool $headers Заглавља - провери белу листу
-	 * @param array|bool $auth HTTP аутентификација @see Curl::auth_params
+	 * @param array|bool $auth HTTP аутентификација @see Curl::authParams
 	 * @return string|bool
 	 */
 	final public static function request($method = self::GET, $url, $query = false, $headers = false, $auth = false) {
@@ -124,7 +124,7 @@ class Curl {
 	 * @param string $password Лозинка
 	 * @return array|bool
 	 */
-	final public static function auth_params($type = self::AUTH_BASIC, $username, $password) {
+	final public static function authParams($type = self::AUTH_BASIC, $username, $password) {
 		if (!in_array($type, [self::AUTH_BASIC, self::AUTH_DIGEST])) {
 			return false;
 		}
