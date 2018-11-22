@@ -2,11 +2,11 @@
 
 /**
  * Кастомизована autoload функција
+ * @param string $className Назив класе
  * @return bool
  */
 spl_autoload_register(function($className) {
 	$path = '';
-
 	if (file_exists('./sys/classes/' . $className . '.php')) {
 		// Укључивање класа из sys/classes фолдера
 		$path = './sys/classes/' . $className . '.php';
@@ -20,14 +20,14 @@ spl_autoload_register(function($className) {
 		// Укључивање конфигурационог фајла
 		$path = './sys/Config.php';
 	} else {
+		// Класа није пронађена
 		die('AUTOLOAD: Class not found.');
 	}
-
+	// Учитавање фајла
 	if (file_exists($path)) {
 		require_once $path;
 		return true;
 	}
-
-	// Класа није пронађена
+	// Фајл није пронађен
 	die('AUTOLOAD: File not found.');
 });
