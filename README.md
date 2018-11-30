@@ -4,8 +4,8 @@
 
 # Overview
 
- PHP MVC boilerplate with user authentication, basic security and MySQL CRUD operations.
- Framework was developed during the final year of university. It was used for some private projects, however I highly suggest you to use Laravel or some other popular framework for your work.
+PHP MVC boilerplate with user authentication, basic security and MySQL CRUD operations.
+Framework was developed during the final year of university. It was used for some private projects, however I highly suggest you to use Laravel or some other popular framework for your work.
 
 ## Requirements
 
@@ -94,7 +94,6 @@ For basic XSS protection (e.g. when we need to insert data in HTML body) you can
 However, that wouldn't protect us if we needed to insert data inside `<script>` tag, for example. Visit OWASP page for further instructions. If you want to use third-party library for defense in depth, HTML Purifier is a good one. For API responses in JavaScript, don't forget to use safe JavaScript functions and properties (e.g. `element.textContent`, jQuery `.text()` function etc.) when you need to populate the DOM.
 
 - [OWASP - XSS (Cross-Site Scripting) Prevention Cheat Sheet](https://www.owasp.org/index.php/XSS_(Cross_Site_Scripting)_Prevention_Cheat_Sheet)
-- [HTML Purifier](http://htmlpurifier.org)
 
 ### Data exposure
 
@@ -102,7 +101,6 @@ This framework provides user authentication functionallity, however if you inten
 
 - [OWASP - User Privacy Protection Cheat Sheet](https://www.owasp.org/index.php/User_Privacy_Protection_Cheat_Sheet)
 - [Let's Encrypt CA](https://letsencrypt.org)
-- [Free SSL Test](https://htbridge.com/ssl)
 
 ## Documentation
 
