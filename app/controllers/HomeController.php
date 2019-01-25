@@ -44,7 +44,7 @@ class HomeController extends Controller {
 
 		// Обустави даљу обраду захтева у случају да није одговарајућа HTTP метода
 		if (!Http::isPost()) {
-			if (Session::get(Config::USER_COOKIE) !== false) {
+			if (!empty(Session::get(Config::USER_COOKIE))) {
 				Redirect::to('');
 			}
 			return;

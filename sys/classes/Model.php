@@ -75,7 +75,7 @@ abstract class Model {
 		$tableName = '`' . self::getTableName() . '`';
 		$fields = $placeholders = $values = [];
 
-		if (!is_array($data) || count($data) === 0) {
+		if (!is_array($data) || empty($data)) {
 			ob_clean();
 			die('MODEL: Bad input for create.');
 		}
@@ -119,7 +119,7 @@ abstract class Model {
 		$tableName = '`' . self::getTableName() . '`';
 		$fields = $values = [];
 
-		if (!is_array($data) || count($data) === 0) {
+		if (!is_array($data) || empty($data)) {
 			ob_clean();
 			die('MODEL: Bad input for update.');
 		}

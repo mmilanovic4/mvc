@@ -1,5 +1,5 @@
 <main>
-	<?php if (count($DATA['tasks']) === 0): ?>
+	<?php if (empty($DATA['tasks'])): ?>
 	<p>Tasklist is currently empty.</p>
 	<?php else: ?>
 	<div class="table-responsive">

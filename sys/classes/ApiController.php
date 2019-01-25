@@ -10,7 +10,7 @@ abstract class ApiController extends Controller {
 	 * @return void
 	 */
 	final public function __pre() {
-		if (Session::get(Config::USER_COOKIE) === false) {
+		if (empty(Session::get(Config::USER_COOKIE))) {
 			http_response_code(403);
 			ob_clean();
 			die('HTTP: 403 forbidden.');
