@@ -6,16 +6,31 @@
 final class Session {
 
 	/**
+	 * Конфигурација сесијског колачића
+	 * @var array
+	 */
+	private static $cookieParams = [
+		'lifetime' => 0,
+		'path' => '/',
+		'domain' => '',
+		'secure' => false,
+		'httponly' => true,
+		'samesite' => 'Strict',
+	];
+
+	/**
 	 * Покретање сесије
 	 * @return void
 	 */
 	final public static function begin() {
 		if (Http::isHttps()) {
-			session_set_cookie_params(0, '/', '', true, true);
-		} else {
-			session_set_cookie_params(0, '/', '', false, true);
+			$this->cookieParams['secure'] = true;
 		}
 
+		if (!session_set_cookie_params(self::$cookieParams)) {
+			ob_clean();
+			die('SESSION: Unable to set cookie params.');
+		}
 		session_start();
 	}
 
