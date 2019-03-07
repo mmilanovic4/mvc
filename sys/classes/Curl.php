@@ -48,7 +48,7 @@ class Curl {
 	const WHITELISTED_HEADERS = [
 		'Accept',
 		'Cache-Control',
-		'X-Csrf-Token',
+		'X-Csrf-Token'
 	];
 
 	/**

@@ -15,7 +15,7 @@ final class Session {
 		'domain' => '',
 		'secure' => false,
 		'httponly' => true,
-		'samesite' => 'Strict',
+		'samesite' => 'Strict'
 	];
 
 	/**

@@ -1,6 +1,6 @@
 :root {
-	--dark: #555;
-	--light: #bbb;
+	--dark: #06f;
+	--light: #ccc;
 }
 
 * {
@@ -70,7 +70,7 @@ form > button {
 form > label > input:focus,
 form > label > textarea:focus,
 form > button:focus {
-	outline: 1px solid var(--dark);
+	border: 1px solid var(--dark);
 }
 
 form > label > textarea {
@@ -83,11 +83,6 @@ form > button {
 	background: var(--light);
 	cursor: pointer;
 	margin-top: 20px;
-}
-
-form > button:hover {
-	background: var(--dark);
-	color: #fff;
 }
 
 footer {
