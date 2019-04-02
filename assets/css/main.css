@@ -39,9 +39,13 @@ nav ul li {
 	margin-left: 20px;
 }
 
+table {
+	border-collapse: collapse;
+	table-layout: fixed;
+}
+
 table, th, td {
 	border: 1px solid #000;
-	border-collapse: collapse;
 }
 
 th, td {

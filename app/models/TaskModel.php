@@ -17,8 +17,8 @@ class TaskModel extends Model {
 	 * @todo heredoc синтакса изгледа лепше од PHP верзије 7.3, са преласком на ту верзију измени SQL упит
 	 */
 	public static function getAllFromInnerJoinWithUsers() {
-		$tasks = '`' . self::getTableName() . '`';
-		$users = '`' . UserModel::getTableName() . '`';
+		$tasks = sprintf('`%s`', self::getTableName());
+		$users = sprintf('`%s`', UserModel::getTableName());
 
 		/**
 		 * Редослед табела у SELECT реду је битан јер желимо да `id` поље из табеле `tasks` прегази `id` поље из табеле `users`
@@ -28,6 +28,7 @@ class TaskModel extends Model {
 		FROM $tasks INNER JOIN $users
 		ON $tasks.`user_id` = $users.`id`;
 END;
+
 		$pst = Database::getInstance()->prepare($sql);
 		$pst->execute();
 

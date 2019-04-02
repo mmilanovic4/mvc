@@ -78,7 +78,7 @@ final class Route {
 	 * @return string
 	 */
 	public function __toString() {
-		return $this->controller . '->' . $this->method . '()';
+		return sprintf('%s->%s()', $this->controller, $this->method);
 	}
 
 }

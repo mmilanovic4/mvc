@@ -6,7 +6,7 @@
  * @return bool
  */
 spl_autoload_register(function($className) {
-	$path = '';
+	$path = null;
 	if (file_exists('./sys/classes/' . $className . '.php')) {
 		// Укључивање класа из sys/classes фолдера
 		$path = './sys/classes/' . $className . '.php';
@@ -23,11 +23,13 @@ spl_autoload_register(function($className) {
 		// Класа није пронађена
 		die('AUTOLOAD: Class not found.');
 	}
+
 	// Учитавање фајла
 	if (file_exists($path)) {
 		require_once $path;
 		return true;
 	}
+
 	// Фајл није пронађен
 	die('AUTOLOAD: File not found.');
 });

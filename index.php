@@ -76,7 +76,7 @@ if (!file_exists($footerView)) {
 }
 
 // Додатни ЈаваСкрипт модул
-$jsModule = 'assets/js/modules/' . sprintf('%s_%s.js', $foundRoute->getController(), $foundRoute->getMethod());
+$jsModule = sprintf('assets/js/modules/%s_%s.js', $foundRoute->getController(), $foundRoute->getMethod());
 if (file_exists($jsModule)) {
 	$DATA['JAVASCRIPT_MODULE'] = $jsModule;
 }

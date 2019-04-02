@@ -19,6 +19,7 @@ class UserModel extends Model {
 	 */
 	public static function getByEmailAndPassword($email, $password) {
 		$tableName = '`' . self::$tableName . '`';
+		$tableName = sprintf('`%s`', self::$tableName);
 
 		$sql = "SELECT * FROM $tableName WHERE `email` = ? AND `password` = ? LIMIT 1;";
 		$pst = Database::getInstance()->prepare($sql);

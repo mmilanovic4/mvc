@@ -17,7 +17,7 @@ final class Database {
 	 */
 	final public static function getInstance() {
 		if (self::$dbh === null) {
-			$dsn = 'mysql:host=' . Config::DB_HOST . ';dbname=' . Config::DB_NAME . ';charset=utf8';
+			$dsn = sprintf('mysql:host=%s;dbname=%s;charset=utf8', Config::DB_HOST, Config::DB_NAME);
 			try {
 				self::$dbh = new PDO($dsn, Config::DB_USER, Config::DB_PASS, [
 					PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_OBJ,

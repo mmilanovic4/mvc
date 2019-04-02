@@ -32,7 +32,7 @@ abstract class Model {
 	 * @return array
 	 */
 	public static function getAll() {
-		$tableName = '`' . self::getTableName() . '`';
+		$tableName = sprintf('`%s`', self::getTableName());
 
 		$sql = "SELECT * FROM $tableName;";
 		$pst = Database::getInstance()->prepare($sql);
@@ -50,7 +50,7 @@ abstract class Model {
 	 * @return object|bool
 	 */
 	public static function getById($id) {
-		$tableName = '`' . self::getTableName() . '`';
+		$tableName = sprintf('`%s`', self::getTableName());
 
 		$sql = "SELECT * FROM $tableName WHERE `id` = ?;";
 		$pst = Database::getInstance()->prepare($sql);
@@ -72,7 +72,7 @@ abstract class Model {
 	 * @return int|bool
 	 */
 	public static function create($data) {
-		$tableName = '`' . self::getTableName() . '`';
+		$tableName = sprintf('`%s`', self::getTableName());
 		$fields = $placeholders = $values = [];
 
 		if (!is_array($data) || empty($data)) {
@@ -116,7 +116,7 @@ abstract class Model {
 	 * @return bool
 	 */
 	public static function update($id, $data) {
-		$tableName = '`' . self::getTableName() . '`';
+		$tableName = sprintf('`%s`', self::getTableName());
 		$fields = $values = [];
 
 		if (!is_array($data) || empty($data)) {
@@ -151,7 +151,7 @@ abstract class Model {
 	 * @return bool
 	 */
 	public static function delete($id) {
-		$tableName = '`' . self::getTableName() . '`';
+		$tableName = sprintf('`%s`', self::getTableName());
 
 		$sql = "DELETE FROM $tableName WHERE `id` = ?;";
 		$pst = Database::getInstance()->prepare($sql);
