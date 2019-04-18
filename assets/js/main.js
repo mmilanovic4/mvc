@@ -1,1 +1,1 @@
-console.debug('Ok.');
+console.log('Ok.');

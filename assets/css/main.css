@@ -6,7 +6,13 @@
 * {
 	box-sizing: border-box;
 	margin: 0;
+	outline: none;
 	padding: 0;
+}
+
+*:focus {
+	outline: 1px solid var(--dark);
+	outline-offset: 2px;
 }
 
 html {
@@ -66,15 +72,8 @@ form > label > textarea,
 form > button {
 	border: 1px solid var(--light);
 	font-size: .9rem;
-	outline: none;
 	padding: 10px;
 	width: 250px;
-}
-
-form > label > input:focus,
-form > label > textarea:focus,
-form > button:focus {
-	border: 1px solid var(--dark);
 }
 
 form > label > textarea {

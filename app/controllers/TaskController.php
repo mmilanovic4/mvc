@@ -19,17 +19,7 @@ class TaskController extends AuthController {
 		// Форматирање података за приказ
 		foreach ($tasks as $task) {
 			$task->created_at = Utils::formatDateAndTime($task->created_at);
-
-			$task->user = null;
-			if (!empty($task->first_name) && !empty($task->last_name)) {
-				$task->user = $task->first_name . ' ' . $task->last_name;
-			} elseif (!empty($task->first_name)) {
-				$task->user = $task->first_name;
-			} elseif (!empty($task->last_name)) {
-				$task->user = $task->last_name;
-			} else {
-				$task->user = 'N/A';
-			}
+			$task->user = $this->formatFirstAndLastName($task->first_name, $task->last_name);
 		}
 
 		// Прослеђивање података слоју приказа
@@ -149,12 +139,30 @@ class TaskController extends AuthController {
 	 * @param int $id ID параметар
 	 * @return void
 	 */
-	private function setTask($id) {
+	private function setTask($id, $name = 'task') {
 		// Узимање података из базе
 		$task = TaskModel::getById($id);
 
 		// Прослеђивање података слоју приказа
-		$this->set('task', $task);
+		$this->set($name, $task);
+	}
+
+	/**
+	 * Форматира име и презиме корисника за приказ
+	 * @param string $firstName Име
+	 * @param string $lastName Презиме
+	 * @return string
+	 */
+	private function formatFirstAndLastName($firstName, $lastName) {
+		if (!empty($firstName) && !empty($lastName)) {
+			return $firstName . ' ' . $lastName;
+		} elseif (!empty($firstName)) {
+			return $firstName;
+		} elseif (!empty($lastName)) {
+			return $lastName;
+		} else {
+			return 'N/A';
+		}
 	}
 
 }
