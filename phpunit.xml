@@ -3,7 +3,8 @@
 	bootstrap="sys/autoload.php"
 	colors="true"
 	stopOnFailure="true"
-	verbose="true">
+	verbose="true"
+>
 	<testsuites>
 		<testsuite name="Test suite">
 			<directory>tests</directory>

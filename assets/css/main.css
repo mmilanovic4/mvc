@@ -11,7 +11,7 @@
 }
 
 *:focus {
-	outline: 1px solid var(--dark);
+	outline: 1px dotted var(--dark);
 	outline-offset: 2px;
 }
 

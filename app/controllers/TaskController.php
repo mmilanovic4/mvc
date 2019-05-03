@@ -153,16 +153,9 @@ class TaskController extends AuthController {
 	 * @param string $lastName Презиме
 	 * @return string
 	 */
-	private function formatFirstAndLastName($firstName, $lastName) {
-		if (!empty($firstName) && !empty($lastName)) {
-			return $firstName . ' ' . $lastName;
-		} elseif (!empty($firstName)) {
-			return $firstName;
-		} elseif (!empty($lastName)) {
-			return $lastName;
-		} else {
-			return 'N/A';
-		}
+	public static function formatFirstAndLastName($firstName, $lastName) {
+		$user = trim(implode(' ', [$firstName, $lastName]));
+		return $user ? $user : 'N/A';
 	}
 
 }

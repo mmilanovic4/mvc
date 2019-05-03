@@ -19,14 +19,6 @@ foreach ($routes as $route) {
 	}
 }
 
-// Учитавање одговарајућег контролера
-$controller = './app/controllers/' . $foundRoute->getController() . 'Controller.php';
-if (!file_exists($controller)) {
-	ob_clean();
-	die('CONTROLLER: File not found.');
-}
-require_once $controller;
-
 // Инстанцирање класе контролера
 $className = $foundRoute->getController() . 'Controller';
 $worker = new $className;

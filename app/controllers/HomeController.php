@@ -18,17 +18,7 @@ class HomeController extends Controller {
 
 		// Форматирање података за приказ
 		if ($user) {
-			$userParsed = null;
-			if (!empty($user->first_name) && !empty($user->last_name)) {
-				$userParsed = $user->first_name . ' ' . $user->last_name;
-			} elseif (!empty($user->first_name)) {
-				$userParsed = $user->first_name;
-			} elseif (!empty($user->last_name)) {
-				$userParsed = $user->last_name;
-			} else {
-				$userParsed = 'N/A';
-			}
-			$this->set('user', $userParsed);
+			$this->set('user', TaskController::formatFirstAndLastName($user->first_name, $user->last_name));
 		} else {
 			$this->set('user', false);
 		}
