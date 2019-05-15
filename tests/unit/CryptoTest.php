@@ -47,4 +47,19 @@ class CryptoTest extends \PHPUnit\Framework\TestCase {
 		$this->assertEquals($output, $target);
 	}
 
+	/**
+	 * @test
+	 */
+	public function symmetric_encryption_and_decription() {
+		$plainText = 'Hello, my name is Miloš.';
+		$key = '123456789012345678901234';
+		$iv = '1234567890123456';
+
+		$encrypted = Crypto::encrypt($plainText, $key, $iv);
+		$decrypted = Crypto::decrypt($encrypted, $key, $iv);
+
+		$this->assertInternalType('string', $encrypted);
+		$this->assertEquals($decrypted, $plainText);
+	}
+
 }
