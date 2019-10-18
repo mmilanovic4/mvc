@@ -35,7 +35,7 @@ abstract class Model {
 		$tableName = sprintf('`%s`', self::getTableName());
 
 		$sql = "SELECT * FROM $tableName;";
-		$pst = Database::getInstance()->prepare($sql);
+		$pst = DB::getInstance()->prepare($sql);
 		$pst->execute();
 
 		return $pst->fetchAll();
@@ -53,7 +53,7 @@ abstract class Model {
 		$tableName = sprintf('`%s`', self::getTableName());
 
 		$sql = "SELECT * FROM $tableName WHERE `id` = ?;";
-		$pst = Database::getInstance()->prepare($sql);
+		$pst = DB::getInstance()->prepare($sql);
 		$pst->bindValue(1, intval($id), PDO::PARAM_INT);
 		$pst->execute();
 
@@ -90,7 +90,7 @@ abstract class Model {
 		$placeholders = '(' . implode(', ', $placeholders) . ')';
 
 		$sql = "INSERT INTO $tableName $fields VALUES $placeholders;";
-		$pst = Database::getInstance()->prepare($sql);
+		$pst = DB::getInstance()->prepare($sql);
 
 		if (!$pst) {
 			return false;
@@ -100,7 +100,7 @@ abstract class Model {
 			return false;
 		}
 
-		return Database::getInstance()->lastInsertId();
+		return DB::getInstance()->lastInsertId();
 	}
 
 	/**
@@ -133,7 +133,7 @@ abstract class Model {
 		$values[] = intval($id);
 
 		$sql = "UPDATE $tableName SET $fields WHERE `id` = ?;";
-		$pst = Database::getInstance()->prepare($sql);
+		$pst = DB::getInstance()->prepare($sql);
 
 		if (!$pst) {
 			return false;
@@ -154,7 +154,7 @@ abstract class Model {
 		$tableName = sprintf('`%s`', self::getTableName());
 
 		$sql = "DELETE FROM $tableName WHERE `id` = ?;";
-		$pst = Database::getInstance()->prepare($sql);
+		$pst = DB::getInstance()->prepare($sql);
 		$pst->bindValue(1, intval($id), PDO::PARAM_INT);
 
 		return $pst->execute();

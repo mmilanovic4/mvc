@@ -14,7 +14,6 @@ class TaskModel extends Model {
 	/**
 	 * Враћање свих редова из табеле - INNER JOIN са табелом `users`
 	 * @return array
-	 * @todo heredoc синтакса изгледа лепше од PHP верзије 7.3, са преласком на ту верзију измени SQL упит
 	 */
 	public static function getAllFromInnerJoinWithUsers() {
 		$tasks = sprintf('`%s`', self::getTableName());
@@ -27,9 +26,9 @@ class TaskModel extends Model {
 		SELECT $tasks.*, $users.`first_name`, $users.`last_name`
 		FROM $tasks INNER JOIN $users
 		ON $tasks.`user_id` = $users.`id`;
-END;
+		END;
 
-		$pst = Database::getInstance()->prepare($sql);
+		$pst = DB::getInstance()->prepare($sql);
 		$pst->execute();
 
 		return $pst->fetchAll();

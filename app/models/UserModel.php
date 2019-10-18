@@ -22,7 +22,7 @@ class UserModel extends Model {
 		$tableName = sprintf('`%s`', self::$tableName);
 
 		$sql = "SELECT * FROM $tableName WHERE `email` = ? AND `password` = ? LIMIT 1;";
-		$pst = Database::getInstance()->prepare($sql);
+		$pst = DB::getInstance()->prepare($sql);
 		$pst->bindValue(1, $email, PDO::PARAM_STR);
 		$pst->bindValue(2, $password, PDO::PARAM_STR);
 		$pst->execute();
