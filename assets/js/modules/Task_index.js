@@ -18,4 +18,6 @@ function fetchTasks () {
 	xhr.send();
 };
 
-window.onload = fetchTasks();
+window.onload = () => {
+	fetchTasks();
+};
