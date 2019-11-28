@@ -9,12 +9,12 @@ final class Config {
 	 * Апсолутни линк апликације
 	 * @var string
 	 */
-	const BASE = 'http://localhost/dev/MVC/';
+	const BASE = 'http://localhost/dev/mvc/';
 
 	/**
 	 * Релативни линк апликације (на продукцији најчешће само '/')
 	 */
-	const PATH = '/dev/MVC/';
+	const PATH = '/dev/mvc/';
 
 	/**
 	 * Сервер БП: име хоста
